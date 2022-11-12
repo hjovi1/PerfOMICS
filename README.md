@@ -39,11 +39,11 @@ The goal of PerfOMICS is to…
     protection, as are the gene and variant selection itself and the
     individual genotype DNA profiles-to-trait interpretations.
 
-ls(“package:TestingPackage”)
+    The \`PerfOMICS\` package was developed using \`R version 4.1.1
+    (2021-08-10)\`,
 
-data(package = “TestingPackage”)
-
-browseVignettes(“TestingPackage”)
+    \`Platform: x86_64-apple-darwin17.0 (64-bit)\` and \`Running under:
+    macOS Big Sur 11.2\`
 
 ## Installation
 
@@ -55,28 +55,81 @@ devtools::install_github("hjovi1/PerfOMICS", build_vignettes = TRUE)
 library("PerfOMICS")
 ```
 
-## Example
+## Overview
 
-This is a basic example which shows you how to solve a common problem:
+\`PerfOMICS\` contains 4 functions to demonstrate features of an
+athletic performance predictor R package. The \*EndurancePredictor\*
+function uses genetic variants associated with athletic ability to
+compute and output a genetic performance prediction score using the
+studied Total Genetic Score ‘TGS’ algorithm. Specifically, the function
+provides greater contexts to an individual’s athletic strengths and
+weakness’. The function outputs a brief description of the name and
+function of the genes used to calculate the score. The
+\*EnduranceFreqPlot\* function generates a frequency plot of a large
+dataset of TGS. Each genotype of the 23 polymorphism used to calculate
+the TGS has a frequency, which is used to generate the large randomized
+dataset. \*TrainingRecommendation\* is a function that provides
+individualized and general training and health recommendations such as
+preventive measures and corrective action for individuals at increased
+risk of soft tissue injury as well as guidelines for preventing fat
+accumulation and muscle mass increase and nutritional guidelines. The
+\*runTestingPackage\* is the function that launches the shiny app for
+this package. The package also contains two datasets of genetic data,
+called LargeDataset and PersonalDataset. Refer to package vignettes for
+more details. An overview of the package is illustrated below.
 
 ``` r
-library(PerfOMICS)
-## basic example code
+# ls("package:PerfOMICS")
+# data(package = "PerfOMICS") 
+# browseVignettes("PerfOMICS")
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+## Contritbutions
 
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
+The author of the package is Helena Jovic.
+
+The *InfCriteriaCalculation* function makes use of map function from
+`mclust` R package to generate information criteria values. The
+Integrated Complete Likelihood (ICL) values are calculated using a
+function written by the author. The `stats` R package is used for
+generating multinomially distributed random number vectors. Part of the
+code for *InfCriteriaCalculation* function has been taken from
+`<NamePackage>` R package. (Section of the borrowed code should be
+clearly indicated and referenced in the InfCriteriaCalculation R
+script). The *InfCriteriaPlot* function makes use of the `graphics` R
+package. *NormFactors* function uses Trimmed Mean of M-values (TMM) as
+implemented in `edgeR` R package.
+
+## References
+
+\[1\] Kambouris, M., Ntalouka, F., Ziogas, G., & Maffulli, N. (2012).
+Predictive Genomics DNA Profiling for Athletic Performance. Recent
+patents on DNA & gene sequences, 6. <doi:10.2174/187221512802717321>
+
+\[2\] Petr M, Thiel D, Kateřina K, Brož P, Malý T, Zahálka F, Vostatková
+P, Wilk M, Chycki J, Stastny P. Speed and power-related gene
+polymorphisms associated with playing position in elite soccer players.
+Biol Sport. 2022 Mar;39(2):355-366. doi: 10.5114/biolsport.2022.105333.
+Epub 2021 Apr 21. PMID: 35309536; PMCID: PMC8919892.
+
+\[3\] Williams AG, Folland JP. Similarity of polygenic profiles limits
+the potential for elite human physical performance. J Physiol. 2008 Jan
+1;586(1):113-21. doi: 10.1113/jphysiol.2007.141887. Epub 2007 Sep 27.
+PMID: 17901117; PMCID: PMC2375556.
+
+\[4\] Ruiz, J. R., Arteta, D., Buxens, A., Artieda, M., Gómez-Gallego,
+F., Santiago, C., ... Lucia, A. (2010). Can we identify a power-oriented
+polygenic profile? Journal of Applied Physiology, 108(3), 561–566.
+<doi:10.1152/japplphysiol.01242.2009>
+
+## **Acknowledgements**
+
+This package was developed as part of an assessment for BCB410H: Applied
+Bioinformatics course at the University of Toronto, Toronto, CANADA.
+`PerfOMICS` welcomes issues, enhancement requests, and other
+contributions. To submit an issue, use the [GitHub
+issues](https://github.com/hjovi1/PerfOMICS/issues). Many thanks to
+those who provided feedback to improve this package.  
 
 You’ll still need to render `README.Rmd` regularly, to keep `README.md`
 up-to-date. `devtools::build_readme()` is handy for this. You could also
