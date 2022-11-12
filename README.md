@@ -3,17 +3,56 @@
 
 # PerfOMICS
 
-<!-- badges: start -->
-<!-- badges: end -->
+PerfOMICS is an R package that predicts athletic performance scores
+using user-provided data on major genetic variants known to be
+associated with specific aspects of sports performance to help profile
+athletes in terms of endurance, power and speed ability, predict and
+forecast effects of training programs and provide genetic insights into
+sports-related injury susceptibility and corrective action.
 
-The goal of PerfOMICS is to …
+## Description
+
+The goal of PerfOMICS is to…
+
+1.  Profile athletes in terms of endurance, power and speed.
+
+2.  Predict and forecasting the effects of training programs and
+    strategies.
+
+3.  Provide genetic insights into injury susceptibility, prevention and
+    disease management.
+
+    This tool can further assist in helping athletes decide their choice
+    of sport or athletic activity, maximize athletic potential through
+    tailoring of athletic programs, provide guidelines on preventive
+    measures and corrective action for athletes susceptible to
+    sports-related injuries.
+
+    Genes and genomic variant selection for predicting athletic
+    performance depends upon the individual's interpretation of the
+    association studies and the strength of each association. This
+    package should not be taken as real medical advice. The development
+    of the algorithms that take into account genotypes of selected
+    genes, assign "weight" values, threshold levels and take into
+    account variant to variant interactions in a DNA-profile-to-trait
+    relation, are proprietary and should be amendable to patent
+    protection, as are the gene and variant selection itself and the
+    individual genotype DNA profiles-to-trait interpretations.
+
+ls(“package:TestingPackage”)
+
+data(package = “TestingPackage”)
+
+browseVignettes(“TestingPackage”)
 
 ## Installation
 
 You can install the development version of PerfOMICS like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+require("devtools")
+devtools::install_github("hjovi1/PerfOMICS", build_vignettes = TRUE)
+library("PerfOMICS")
 ```
 
 ## Example
