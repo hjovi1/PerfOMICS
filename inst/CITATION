@@ -1,0 +1,10 @@
+citHeader("To cite PerfOMICS in publications use:")
+
+citEntry(
+  entry    = "Unpublished",
+  title    = "PerfOMICS",
+  author   = "Helena Jovic",
+  note     = "Unpublished"
+  year     = "2022",
+  textVersion = paste("Jovic, H. (2022) PerfOMICS. Unpublished. URL https://github.com/hjovi1/PerfOMICSLinks to an external site.")
+)
