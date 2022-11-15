@@ -34,6 +34,7 @@
 #' associated with playing position in elite soccer players. Biol Sport.
 #' 2022 Mar;39(2):355-366. doi: 10.5114/biolsport.2022.105333.
 #' Epub 2021 Apr 21. PMID: 35309536; PMCID: PMC8919892.
+#'
 
 genotypeProb <- function(){
 gene <- c("ACE2", "ACTN3","ADRA2A","ADRB2","AMPD1","APOE","ATP1A2","ATP1A2x",
@@ -189,11 +190,14 @@ generateDataSet <- function(n) {
 #'respective calculated total genotype scores to be included in the dataset.
 #'
 #'@return Returns a frequency plot of n individuals and their respective TGS.
-#'@import Hmisc
+#'@import Hmisc lattice survival Formula ggplot2
 #'
 generateFreqPlot <- function(n=100){
   # install.packages("Hmisc")
+  library("lattice")
+  library("survival")
+  library("Formula")
+  library("ggplot2")
   library("Hmisc")
   plot <- hist.data.frame(generateDataSet(n))
 }
-
