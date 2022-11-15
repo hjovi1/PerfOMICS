@@ -1,5 +1,6 @@
-#' Purpose: Calculate the Total Genetic Score using the genotypes of 23
-#' polymorphims of genes associated with endurance athletic ability.
+#' Purpose: Use contribed datasets of researched-backed polygenic information
+#' to analyze and visualize predicted athletic endurance performances of
+#' individuals based on their polygenic athlete profile and total genotype score.
 #' Author: Helena Jovic
 #' Date: November 11, 2022
 #' Version: 1.0
@@ -11,53 +12,19 @@
 #' library(testthat)
 #' library(knitr)
 #'
+#' Helper function: genotypeProb()
 #' A function that compiles genetic information of 23 genes associated with
-#' endurance athletic ability. The function using researched statistical data
-#' on the frequencies of the genotypes of each gene. Each genotype is paired
-#' with a respective genetic score, revealing how favourable it is for athletic
-#' ability.
+#' endurance athletic ability. The function uses researched statistical data
+#' on the frequencies of the genotypes of each gene to generate a polygenic
+#' profile to predict athletic endurance performance. Each genotype is paired
+#' with a respective genetic score, revealing how favourable (0 = unfavourable,
+#' 1 = neutral, 2 = favourable) each genotype is for athletic endurance ability.
 #'
 #' @return a dataframe containing a column of genes associated with athletic
 #' ability and a corresponding column of scores paired with each gene for one
 #' individual.
 #'
-#' @examples
-#' # Using airwayCounts and airwayMetadata available with package
-#'
-#' # perform DGE analysis with DESeq2
-#' dds <- DESeq2::DESeqDataSetFromMatrix(countData=airwayCounts,
-#'                                       colData=airwayMetadata,
-#'                                       design=~dex,
-#'                                       tidy=TRUE)
-#' dds <- DESeq2::estimateSizeFactors(dds)
-#'
-#' dds@colData$dex <- relevel(dds@colData$dex, ref = "control")
-#' dds <- DESeq2::DESeq(dds)
-#'
-#' res <- DESeq2::results(dds, tidy=TRUE)
-#' deseq2Res <- DESeq2::lfcShrink(dds, coef = "dex_treated_vs_control",
-#'                                   type = "apeglm")
-#'
-#' # perform DGE analysis with edgeR
-#' counts <- data.frame(airwayCounts[,-1], row.names = airwayCounts$ensgene)
-#'
-#' diffList <- edgeR::DGEList(counts, samples = airwayMetadata)
-#'
-#' dex <- factor(rep(c("control", "treated"), 4))
-#' design <- model.matrix(~dex)
-#' rownames(design) <- colnames(diffList)
-#'
-#' diffList <- edgeR::estimateDisp(diffList, design, robust = TRUE)
-#' fit <- edgeR::glmFit(diffList, design)
-#' lrt <- edgeR::glmLRT(fit)
-#' edgerRes <- edgeR::topTags(lrt, n = dim(lrt)[1])$table
-#'
-#' # make the Volcano plots
-#' compVolcano(deseq2Result = deseq2Res,
-#'        edgerResult = edgerRes)
-#'
 #' @references
-#'
 #' Kambouris, M., Ntalouka, F., Ziogas, G., & Maffulli, N. (2012).
 #' Predictive Genomics DNA Profiling for Athletic Performance. Recent patents
 #' on DNA & gene sequences, 6. doi:10.2174/187221512802717321
@@ -67,9 +34,6 @@
 #' associated with playing position in elite soccer players. Biol Sport.
 #' 2022 Mar;39(2):355-366. doi: 10.5114/biolsport.2022.105333.
 #' Epub 2021 Apr 21. PMID: 35309536; PMCID: PMC8919892.
-#'
-#' @export
-#' @import ggplot2
 
 genotypeProb <- function(){
 gene <- c("ACE2", "ACTN3","ADRA2A","ADRB2","AMPD1","APOE","ATP1A2","ATP1A2x",
@@ -124,6 +88,19 @@ calculateTGS <- function(){
   return(TGS)
 }
 
+#'Function: athleteProfile()
+#'
+#'Purpose: To generate a detailed report on an athlete's polygenic profile.
+#'This function uses the helper function genotypeProb() and the total genotype
+#'score calculation to provide insights on an athlete's strenghts, weakness'
+#'as well as any meaningful effects on sports performances and training
+#'recommendations.
+#'
+#'@return Returns a series of print functions to convey a detailed report on an
+#'athlete's polygenic profile and its implications on training recommendations
+#'and athletic performance.
+#'
+
 athleteProfile <- function(){
   ind <- genotypeProb()
   scores <-ind["score"]
@@ -151,7 +128,7 @@ athleteProfile <- function(){
   }
 
   if ("ACE2"%in% unfavourable){
-    print("ACE Gene is unfavourable in your genetic profile. Effect on Sports
+    print("ACE gene is unfavourable in your genetic profile. Effect on Sports
     Performance: Reduced endurance capacity / increased muscle performance.
     Training Recommendations: Training to increase anaerobic (a-lactic)
     performance. Increase progressively but fast the number of training
@@ -160,7 +137,7 @@ athleteProfile <- function(){
           loads.")
   }
   if ("ACTN3"%in%favourable){
-  print("ACTN3 Gene is favourable in your genetic profile. Effect on Sports
+  print("ACTN3 gene is favourable in your genetic profile. Effect on Sports
   Performance: Increased slow muscle fiber metabolism
   reduced muscle power. Training Recommendations: Long term physical
   preparation to achieve technical perfection. Perform many routes of the
@@ -171,16 +148,15 @@ athleteProfile <- function(){
   exercise.")
   }
 
-  print("Your calculated Total Genetic Score out of 100 is:")
+  print("Your calculated Total Genotype Score out of 100 is: ")
   print(TGS)
-  print("These genes in your profile are favourable for athletic performance")
+  print("These genes in your profile are favourable for endurance athletic performance")
     print(favourable)
-    print("These genes in your profile are unfavourable for athletic performance")
+    print("These genes in your profile are unfavourable for endurance athletic performance")
     print(unfavourable)
-    print("These genes in your profile are neutral for athletic performance")
+    print("These genes in your profile are neutral for endurance athletic performance")
     print(neutral)
-  print("Refer to the gene glossary in geneInfo.R for more insights on your
-        genetic profile.")
+  print("Refer to the gene glossary in geneInfo.R for more insights on your polygenetic profile.")
 }
 
 #'Helper function: generateDataSet(n)
