@@ -19,7 +19,7 @@ PerfOMICS is an R package that predicts athletic performance scores using user-p
 
 ## Description
 
-The goal of PerfOMICS is to...
+The goal of PerfOMICS is to:
 
 1.  Profile athletes in terms of endurance, power and speed.
 

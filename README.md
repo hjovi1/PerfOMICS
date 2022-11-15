@@ -88,8 +88,9 @@ more details. An overview of the package is illustrated below.
 
 The author of the package is Helena Jovic.
 
-The generateFreqPlot function makes use of the ggplot R package to plot the
-frequency distribution of the TGS for n individual polygenic profiles.
+The generateFreqPlot function makes use of the ggplot R package to plot
+the frequency distribution of the TGS for nindividual polygenic
+profiles.
 
 ## References
 

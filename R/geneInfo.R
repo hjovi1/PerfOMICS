@@ -1,5 +1,5 @@
-ACE <- "ACE (angiotensin I converting enzyme (peptidyl-dipeptidase A) 1).
-Function: Blood Pressure regulation, Muscle performance, Lipids & Glucose levels.
+ACE <- "ACE (angiotensin I converting enzyme (peptidyl-dipeptidase A) 1). +
+Function: Blood Pressure regulation, Muscle performance, Lipids & Glucose levels. +
 Variants and Frequencies: 1=DD (0.29), 2=ID(0.50), 3=II(0.21)"
 
 ACTN3 <- "ACTN3 (actinin, alpha 3).

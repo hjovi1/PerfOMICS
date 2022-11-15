@@ -1,5 +1,7 @@
 ---
 title: "PerfOMICS"
+author: "Helena Jovic"
+date: "`r format(Sys.time(), '%d %b %Y')`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{PerfOMICS}
@@ -15,5 +17,34 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(PerfOMICS)
+#library(PerfOMICS)
+```
+
+## Introduction
+
+See `help(package = "PerfOMICS")` for further details and references provided by `citation("PerfOMICS")`. To download **PerfOMICS**, use the following commands:
+
+#``` r
+#require("devtools")
+devtools::install_github("hjovi1/PerfOMICS", build_vignettes = TRUE)
+#library("PerfOMICS")
+```
+To list all functions available in the package:
+``` r
+lsf.str("package:PerfOMICS")
+```
+
+<br>
+
+## Details
+
+- Analysis (4 functions):
+- Plots (3 functions):
+
+Assumptions:
+
+## References
+
+```{r}
+sessionInfo()
 ```
