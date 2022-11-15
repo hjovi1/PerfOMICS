@@ -88,17 +88,8 @@ more details. An overview of the package is illustrated below.
 
 The author of the package is Helena Jovic.
 
-The *InfCriteriaCalculation* function makes use of map function from
-`mclust` R package to generate information criteria values. The
-Integrated Complete Likelihood (ICL) values are calculated using a
-function written by the author. The `stats` R package is used for
-generating multinomially distributed random number vectors. Part of the
-code for *InfCriteriaCalculation* function has been taken from
-`<NamePackage>` R package. (Section of the borrowed code should be
-clearly indicated and referenced in the InfCriteriaCalculation R
-script). The *InfCriteriaPlot* function makes use of the `graphics` R
-package. *NormFactors* function uses Trimmed Mean of M-values (TMM) as
-implemented in `edgeR` R package.
+The generateFreqPlot function makes use of the ggplot R package to plot the
+frequency distribution of the TGS for n individual polygenic profiles.
 
 ## References
 
