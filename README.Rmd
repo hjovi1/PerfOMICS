@@ -48,12 +48,14 @@ library("PerfOMICS")
 
 ## Overview
 
-\`PerfOMICS\` contains 4 functions to demonstrate features of an athletic performance predictor R package. The \*EndurancePredictor\* function uses genetic variants associated with athletic ability to compute and output a genetic performance prediction score using the studied Total Genetic Score 'TGS' algorithm. Specifically, the function provides greater contexts to an individual's athletic strengths and weakness'. The function outputs a brief description of the name and function of the genes used to calculate the score. The \*EnduranceFreqPlot\* function generates a frequency plot of a large dataset of TGS. Each genotype of the 23 polymorphism used to calculate the TGS has a frequency, which is used to generate the large randomized dataset. \*TrainingRecommendation\* is a function that provides individualized and general training and health recommendations such as preventive measures and corrective action for individuals at increased risk of soft tissue injury as well as guidelines for preventing fat accumulation and muscle mass increase and nutritional guidelines. The \*runTestingPackage\* is the function that launches the shiny app for this package. The package also contains two datasets of genetic data, called LargeDataset and PersonalDataset. Refer to package vignettes for more details. An overview of the package is illustrated below.
+\`PerfOMICS\` contains 4 functions to demonstrate features of an athletic performance predictor R package. genotypeProb() outputs a set of 23 genotypes with a respective genetic score. calculateTGS(): calculates the total genotype score using the set from genotypeProb(). athleteProfile() generates an individualised athlete polygenetic profile. generateDataSet(n) generates a dataset of n polygenetic profiles to be used for analysis and plots. printGeneInfo() prints information on each gene that is being used in the TGS calculation (name, function, variants and frequencies)
+
+Refer to package vignettes for more details. An overview of the package is illustrated below.
 
 ```{r}
-# ls("package:PerfOMICS")
-# data(package = "PerfOMICS") 
-# browseVignettes("PerfOMICS")
+#ls("package:PerfOMICS")
+#data(package = "PerfOMICS") 
+#browseVignettes("PerfOMICS")
 ```
 
 ## Assumptions
