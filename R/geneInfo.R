@@ -1,3 +1,11 @@
+#'Function: printGeneInfo()
+#'
+#'Purpose: prints information on each gene that is being used in the
+#'TGS calculation (name of gene, function of gene, variants and frequencies)
+#'
+#'@return Returns list of different genes and their descriptions.
+#'
+
 ACE <- "ACE (angiotensin I converting enzyme (peptidyl-dipeptidase A) 1).
 Function: Blood Pressure regulation, Muscle performance, Lipids & Glucose levels.
 Variants and Frequencies: 1=DD (0.29), 2=ID(0.50), 3=II(0.21)"
