@@ -20,6 +20,7 @@
 #' with a respective genetic score, revealing how favourable (0 = unfavourable,
 #' 1 = neutral, 2 = favourable) each genotype is for athletic endurance ability.
 #'
+#' @export
 #' @return a dataframe containing a column of genes associated with athletic
 #' ability and a corresponding column of scores paired with each gene for one
 #' individual.
@@ -82,6 +83,7 @@ return(df)
 #'limits the potential for elite human physical performance. The Journal of
 #'physiology, 586(1), 113–121. https://doi.org/10.1113/jphysiol.2007.141887
 #'
+#'@export
 #'@return Returns the total genotype score (TGS) of one polygenic profile.
 #'
 calculateTGS <- function(){
@@ -98,7 +100,7 @@ calculateTGS <- function(){
 #'This function uses the helper function genotypeProb() and TGS calculations
 #'to provide insights on an athlete's strengths, weakness' as well as consequential
 #'effects on sports performances and individualized training recommendations.
-#'
+#'@export
 #'@return Returns a series of print functions to convey a detailed report on an
 #'athlete's polygenic profile and its implications on training recommendations
 #'and athletic performance.
@@ -170,7 +172,7 @@ athleteProfile <- function(){
 #'
 #'@param n for the number of polygenic profiles to be generated and their
 #'respective calculated total genotype scores to be included in the dataset.
-#'
+#'@export
 #'@return Returns a dataframe of n individuals and their respective TGS.
 #'
 generateDataSet <- function(n) {
@@ -190,7 +192,7 @@ generateDataSet <- function(n) {
 #'
 #'@param n for the number of polygenic profiles to be generated and their
 #'respective calculated total genotype scores to be included in the dataset.
-#'
+#'@export
 #'@return Returns a frequency plot of n individuals and their respective TGS.
 #'@import Hmisc lattice survival Formula ggplot2
 #'
@@ -211,7 +213,7 @@ generateFreqPlot <- function(n=100){
 #'
 #'@param n for the number of polygenic profiles to be generated and their
 #'respective calculated total genotype scores to be included in the dataset.
-#'
+#'@export
 #'@return Returns a frequency plot of n individuals and their respective TGS.
 #'@import graphics
 #'

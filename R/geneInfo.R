@@ -3,6 +3,7 @@
 #'Purpose: prints information on each gene that is being used in the
 #'TGS calculation (name of gene, function of gene, variants and frequencies)
 #'
+#'@export
 #'@return Returns list of different genes and their descriptions.
 #'
 
