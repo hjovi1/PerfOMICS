@@ -13,8 +13,7 @@ and athletic performance.
 }
 \description{
 Purpose: To generate a detailed report on an athlete's polygenic profile.
-This function uses the helper function genotypeProb() and the total genotype
-score calculation to provide insights on an athlete's strenghts, weakness'
-as well as any meaningful effects on sports performances and training
-recommendations.
+This function uses the helper function genotypeProb() and TGS calculations
+to provide insights on an athlete's strengths, weakness' as well as consequential
+effects on sports performances and individualized training recommendations.
 }

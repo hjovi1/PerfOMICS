@@ -25,7 +25,7 @@ library(testthat)
 library(knitr)
 }
 \details{
-Helper function: genotypeProb()
+Function: genotypeProb()
 A function that compiles genetic information of 23 genes associated with
 endurance athletic ability. The function uses researched statistical data
 on the frequencies of the genotypes of each gene to generate a polygenic

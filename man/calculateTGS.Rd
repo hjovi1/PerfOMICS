@@ -2,7 +2,7 @@
 % Please edit documentation in R/totalGeneticScore.R
 \name{calculateTGS}
 \alias{calculateTGS}
-\title{Helper function: calculateTGS()}
+\title{Function: calculateTGS()}
 \usage{
 calculateTGS()
 }

@@ -12,7 +12,7 @@ sports-related injury susceptibility and corrective action.
 
 ## Description
 
-The goal of PerfOMICS is to…
+The goal of PerfOMICS is to:
 
 1.  Profile athletes in terms of endurance, power and speed.
 
@@ -27,17 +27,6 @@ The goal of PerfOMICS is to…
     tailoring of athletic programs, provide guidelines on preventive
     measures and corrective action for athletes susceptible to
     sports-related injuries.
-
-    Genes and genomic variant selection for predicting athletic
-    performance depends upon the individual's interpretation of the
-    association studies and the strength of each association. This
-    package should not be taken as real medical advice. The development
-    of the algorithms that take into account genotypes of selected
-    genes, assign "weight" values, threshold levels and take into
-    account variant to variant interactions in a DNA-profile-to-trait
-    relation, are proprietary and should be amendable to patent
-    protection, as are the gene and variant selection itself and the
-    individual genotype DNA profiles-to-trait interpretations.
 
     The \`PerfOMICS\` package was developed using \`R version 4.1.1
     (2021-08-10)\`,
@@ -84,12 +73,24 @@ more details. An overview of the package is illustrated below.
 # browseVignettes("PerfOMICS")
 ```
 
+## Assumptions
+
+Genes and genomic variant selection for predicting athletic performance
+depends upon the individual's interpretation of the association studies
+and the strength of each association. This package should not be taken
+as real medical advice. The development of the algorithms that take into
+account genotypes of selected genes, assign "weight" values, threshold
+levels and take into account variant to variant interactions in a
+DNA-profile-to-trait relation, are proprietary and should be amendable
+to patent protection, as are the gene and variant selection itself and
+the individual genotype DNA profiles-to-trait interpretations.
+
 ## Contritbutions
 
 The author of the package is Helena Jovic.
 
 The generateFreqPlot function makes use of the ggplot R package to plot
-the frequency distribution of the TGS for nindividual polygenic
+the frequency distribution of the TGS for n individual polygenic
 profiles.
 
 ## References
@@ -123,15 +124,8 @@ contributions. To submit an issue, use the [GitHub
 issues](https://github.com/hjovi1/PerfOMICS/issues). Many thanks to
 those who provided feedback to improve this package.  
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+``` r
+knitr::include_graphics("man/figures/bcb410.jpg")
+```
 
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+<img src="man/figures/bcb410.jpg" width="100%" />

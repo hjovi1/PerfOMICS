@@ -16,34 +16,101 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-#library(PerfOMICS)
+```{r, include=FALSE}
+library(knitr)
+opts_chunk$set(fig.align = "center", 
+               out.width = "90%",
+               fig.width = 6, fig.height = 5.5,
+               dev.args=list(pointsize=10),
+               par = TRUE, # needed for setting hook 
+               collapse = TRUE, # collapse input & ouput code in chunks
+               warning = FALSE)
+knit_hooks$set(par = function(before, options, envir)
+  { if(before && options$fig.show != "none") 
+       par(family = "sans", mar=c(4.1,4.1,1.1,1.1), mgp=c(3,1,0), tcl=-0.5)
+})
+set.seed(1) # for exact reproducibility
 ```
 
 ## Introduction
 
 See `help(package = "PerfOMICS")` for further details and references provided by `citation("PerfOMICS")`. To download **PerfOMICS**, use the following commands:
 
-#``` r
-#require("devtools")
+``` r
+require("devtools")
 devtools::install_github("hjovi1/PerfOMICS", build_vignettes = TRUE)
-#library("PerfOMICS")
+library("PerfOMICS")
 ```
 To list all functions available in the package:
 ``` r
 lsf.str("package:PerfOMICS")
 ```
 
-<br>
-
 ## Details
 
+The biological data analysed by PerfOMICS are the genotypes and variants of 
+23 different genes associated with athletic ability. These variants all have
+researched frequencies in large populations. The data in this R package has
+been synthetically synthesized using information on the frequencies of each 
+genotype for the 23 genes being analysed. The data set being generated can be
+as large as needed.
+
+Total genotype score (TGS) reflects the additive effect of genotypes
+on predicting a complex trait such as athletic performance. It is an algorithm
+introduced by Williams and Folland and is also known as a genetic predisposition
+score using synthetic data of 23 genetic markers. As of yet, there does not
+exist an R package that calculates this score using Williams and Folland
+algorithm. PerfOMICS is a novel tool since it provides a detailed report on an 
+athlete's polygenic profile as well as analyses and plots the frequencies of 
+TGS from the synthesized data. This tool can further assist in helping athletes 
+decide their choice of sport or athletic activity, maximize athletic potential 
+through tailoring of athletic programs, provide guidelines on preventive 
+measures and corrective action for athletes susceptible to sports-related 
+injuries.
+
 - Analysis (4 functions):
-- Plots (3 functions):
+a. genotypeProb(): outputs a set of 23 genotypes with a respective genetic score 
+b. calculateTGS(): calculates the total genotype score using the set from a.
+c. athleteProfile(): generates an individualised athlete polygenetic profile.
+d. generateDataSet(n): generates a dataset <1 individual polygenetic profiles
+to be used for analysis and plots
+e. printGeneInfo(): prints information on each gene that is being used in the
+TGS calculation (name, function, variants and frequencies)
+
+- Function for Plots (3 functions):
+a. generateFreqPlot(): generates a frequency plot using a generated dataset of TGS
+b. generateBoxPlot(): generates a box plot using a generated dataset of TGS
 
 Assumptions:
+Genes and genomic variant selection for predicting athletic performance depends
+upon the individual\'s interpretation of the association studies and the 
+strength of each association. This package should not be taken as real 
+medical advice. The development of the algorithms that take into account 
+genotypes of selected genes, assign \"weight\" values, threshold levels and 
+take into account variant to variant interactions in a DNA-profile-to-trait 
+relation, are proprietary and should be amendable to patent protection, as are 
+the gene and variant selection itself and the individual genotype DNA 
+profiles-to-trait interpretations.
 
 ## References
+[1] Kambouris, M., Ntalouka, F., Ziogas, G., & Maffulli, N. (2012). Predictive Genomics
+DNA Profiling for Athletic Performance. Recent patents on DNA & gene sequences, 6.
+doi:10.2174/187221512802717321
+
+[2] Petr M, Thiel D, Kateřina K, Brož P, Malý T, Zahálka F, Vostatková P, Wilk M, Chycki
+J, Stastny P. Speed and power-related gene polymorphisms associated with playing
+position in elite soccer players. Biol Sport. 2022 Mar;39(2):355-366. doi:
+10.5114/biolsport.2022.105333. Epub 2021 Apr 21. PMID: 35309536; PMCID:
+PMC8919892.					
+
+[3] Williams AG, Folland JP. Similarity of polygenic profiles limits the potential for elite
+human physical performance. J Physiol. 2008 Jan 1;586(1):113-21. doi:
+10.1113/jphysiol.2007.141887. Epub 2007 Sep 27. PMID: 17901117; PMCID:
+PMC2375556.
+
+[4] Ruiz, J. R., Arteta, D., Buxens, A., Artieda, M., Gómez-Gallego, F., Santiago, C., \...
+Lucia, A. (2010). Can we identify a power-oriented polygenic profile? Journal of Applied
+Physiology, 108(3), 561--566. doi:10.1152/japplphysiol.01242.2009
 
 ```{r}
 sessionInfo()

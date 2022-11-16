@@ -12,7 +12,7 @@
 #' library(testthat)
 #' library(knitr)
 #'
-#' Helper function: genotypeProb()
+#' Function: genotypeProb()
 #' A function that compiles genetic information of 23 genes associated with
 #' endurance athletic ability. The function uses researched statistical data
 #' on the frequencies of the genotypes of each gene to generate a polygenic
@@ -37,9 +37,11 @@
 #'
 
 genotypeProb <- function(){
+# 23 gene polymorphisms that will be used to calculate the athletic performance prediction score
 gene <- c("ACE2", "ACTN3","ADRA2A","ADRB2","AMPD1","APOE","ATP1A2","ATP1A2x",
           "BDKRB2","CKM","EPAS1","EPAS1x","HFE","HIF1A","HLAA","MTND5","MTND5x",
           "MTND5y", "MTTT","PPARA","PPARGC1A","UCP2","VEGFA")
+# each gene's variants are paired with an accepted researched frequency in large populations.
 score <- c(sample(c(0,1,2), 1, replace=TRUE, prob = c(0.29,0.50, 0.21)),
                    sample(c(0,1,2), 1, replace=TRUE, prob = c(0.30,0.52, 0.18)),
                    sample(c(0,1,2), 1, replace=TRUE, prob = c(0.30,0.52, 0.18)),
@@ -63,12 +65,12 @@ score <- c(sample(c(0,1,2), 1, replace=TRUE, prob = c(0.29,0.50, 0.21)),
                    sample(c(0,1,2), 1, replace=TRUE, prob = c(0.09,0.51, 0.40)),
                    sample(c(0,1,2), 1, replace=TRUE, prob = c(0.35,0.48, 0.17)),
                    sample(c(0,1,2), 1, replace=TRUE, prob = c(0.25,0.45, 0.30)))
-
+# storing the data in a data frame
 df <- data.frame(gene, score)
 return(df)
 }
 
-#'Helper function: calculateTGS()
+#'Function: calculateTGS()
 #'
 #'Purpose: Total genotype score (TGS) reflects the additive effect of genotypes
 #'on predicting a complex trait such as athletic performance. It is an algorithm
@@ -85,6 +87,7 @@ return(df)
 calculateTGS <- function(){
   genes <- genotypeProb()
   scores <- genotypeProb()["score"]
+  # Williams and Folland genetic predisposition score using synthetic data of 23 genetic markers
   TGS <- ((100/46)*sum(scores))
   return(TGS)
 }
@@ -92,10 +95,9 @@ calculateTGS <- function(){
 #'Function: athleteProfile()
 #'
 #'Purpose: To generate a detailed report on an athlete's polygenic profile.
-#'This function uses the helper function genotypeProb() and the total genotype
-#'score calculation to provide insights on an athlete's strenghts, weakness'
-#'as well as any meaningful effects on sports performances and training
-#'recommendations.
+#'This function uses the helper function genotypeProb() and TGS calculations
+#'to provide insights on an athlete's strengths, weakness' as well as consequential
+#'effects on sports performances and individualized training recommendations.
 #'
 #'@return Returns a series of print functions to convey a detailed report on an
 #'athlete's polygenic profile and its implications on training recommendations
@@ -160,7 +162,7 @@ athleteProfile <- function(){
   print("Refer to the gene glossary in geneInfo.R for more insights on your polygenetic profile.")
 }
 
-#'Helper function: generateDataSet(n)
+#'Function: generateDataSet(n)
 #'
 #'Purpose: To generate a large dataset in the form of a data fram of n
 #'polygenic total genotype scores to be used for analysis and (potential)
@@ -200,4 +202,22 @@ generateFreqPlot <- function(n=100){
   library("ggplot2")
   library("Hmisc")
   plot <- hist.data.frame(generateDataSet(n))
+}
+
+#'Plot function: generateBoxPlot(n)
+#'
+#'Purpose: To generate a box plot of n polygenic total genotype scores to
+#'be used for analysis and plotting purposes.
+#'
+#'@param n for the number of polygenic profiles to be generated and their
+#'respective calculated total genotype scores to be included in the dataset.
+#'
+#'@return Returns a frequency plot of n individuals and their respective TGS.
+#'@import graphics
+#'
+generateBoxPlot <- function(n=100){
+  # install.packages("graphics")
+  library(graphics) # to load and attach
+  dataset <- generateDataSet(n)
+  box <- boxplot(dataset) # boxplot
 }

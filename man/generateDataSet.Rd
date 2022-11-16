@@ -2,7 +2,7 @@
 % Please edit documentation in R/totalGeneticScore.R
 \name{generateDataSet}
 \alias{generateDataSet}
-\title{Helper function: generateDataSet(n)}
+\title{Function: generateDataSet(n)}
 \usage{
 generateDataSet(n)
 }
