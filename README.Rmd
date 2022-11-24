@@ -58,15 +58,13 @@ Refer to package vignettes for more details. An overview of the package is illus
 #browseVignettes("PerfOMICS")
 ```
 
-## Assumptions
-Genes and genomic variant selection for predicting athletic performance depends upon the individual\'s interpretation of the association studies and the strength of each association. This package should not be taken as real medical advice. The development of the algorithms that take into account genotypes of selected genes, assign \"weight\" values, threshold levels and take into account variant to variant interactions in a DNA-profile-to-trait relation, are proprietary and should be amendable to patent protection, as are the gene and variant selection itself and the individual genotype DNA profiles-to-trait interpretations.
-
 ## Contritbutions
 
 The author of the package is Helena Jovic.
 
 The generateFreqPlot function makes use of the ggplot R package to plot the
-frequency distribution of the TGS for n individual polygenic profiles.
+frequency distribution of the TGS for n individual polygenic profiles. Other packages
+that are used are Hmisc, lattice, survival and Formula. 
 
 ## References						
 
@@ -89,6 +87,26 @@ PMC2375556.
 Lucia, A. (2010). Can we identify a power-oriented polygenic profile? Journal of Applied
 Physiology, 108(3), 561--566. doi:10.1152/japplphysiol.01242.2009
 
+[5] H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
+
+[6] Harrell Jr F (2022). _Hmisc: Harrell Miscellaneous_. R package version 4.7-1,
+  <https://CRAN.R-project.org/package=Hmisc>.
+  
+[7] Sarkar, Deepayan (2008) Lattice: Multivariate Data Visualization with R. Springer, New York. ISBN 978-0-387-75968-5
+
+[8] Zeileis A, Croissant Y (2010). “Extended Model Formulas in R: Multiple Parts and Multiple Responses.” _Journal of
+  Statistical Software_, *34*(1), 1-13. doi:10.18637/jss.v034.i01 <https://doi.org/10.18637/jss.v034.i01>.
+
+[9] Therneau T (2022). _A Package for Survival Analysis in R_. R package version 3.4-0,
+  <https://CRAN.R-project.org/package=survival>.
+
+[10] Terry M. Therneau, Patricia M. Grambsch (2000). _Modeling Survival Data: Extending the Cox Model_. Springer, New York.
+  ISBN 0-387-98784-3.
+
+
+[11] RStudio Team (2022). RStudio: Integrated Development Environment for R. RStudio, PBC, Boston, MA URL
+  http://www.rstudio.com/.
+
 ## **Acknowledgements**
 
 This package was developed as part of an assessment for BCB410H: Applied Bioinformatics course at the University of Toronto, Toronto, CANADA. `PerfOMICS` welcomes issues, enhancement requests, and other contributions. To submit an issue, use the [GitHub issues](https://github.com/hjovi1/PerfOMICS/issues). Many thanks to those who provided feedback to improve this package.\
@@ -97,3 +115,5 @@ This package was developed as part of an assessment for BCB410H: Applied Bioinfo
 knitr::include_graphics("man/figures/bcb410.jpg")
 ```
 
+## Assumptions
+Genes and genomic variant selection for predicting athletic performance depends upon the individual\'s interpretation of the association studies and the strength of each association. This package should not be taken as real medical advice. The development of the algorithms that take into account genotypes of selected genes, assign \"weight\" values, threshold levels and take into account variant to variant interactions in a DNA-profile-to-trait relation, are proprietary and should be amendable to patent protection, as are the gene and variant selection itself and the individual genotype DNA profiles-to-trait interpretations.
