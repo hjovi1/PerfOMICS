@@ -198,11 +198,11 @@ generateDataSet <- function(n) {
 #'
 generateFreqPlot <- function(n=100){
   # install.packages("Hmisc")
-  library("lattice")
-  library("survival")
-  library("Formula")
-  library("ggplot2")
-  library("Hmisc")
+  #library("lattice")
+  #library("survival")
+  #library("Formula")
+  #library("ggplot2")
+  #library("Hmisc")
   plot <- hist.data.frame(generateDataSet(n))
 }
 
@@ -223,3 +223,5 @@ generateBoxPlot <- function(n=100){
   dataset <- generateDataSet(n)
   box <- boxplot(dataset) # boxplot
 }
+
+#[END] Written by Helena Jovic
