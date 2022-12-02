@@ -37,6 +37,106 @@
 #' Epub 2021 Apr 21. PMID: 35309536; PMCID: PMC8919892.
 #'
 
+userScore <- function(file){
+  # read excel file with user provided genetic profile
+  data <- read_excel(file)
+  # initialize total genetic score at 0
+  totalScore <- 0
+  row <- 0
+  # iterate through each genotype variant in individual genetic profile
+  for (genotype in data$Variant) {
+    row <- row + 1
+    # check if variant is unfavourable
+    if (genotype %in% geneInfo$`Unfavourable genotype`[row]){
+      # add gene score to total score
+      totalScore = totalScore + 0
+      print(geneInfo$`Unfavourable genotype`[row])}
+    # check if variant if netural
+    else if (genotype %in% geneInfo$`Neutral genotype`[row]){
+      # add gene score to total score
+      totalScore = totalScore + 1
+      print(geneInfo$`Neutral genotype`[row])}
+    # check if variant is optimal
+    else if (genotype %in% geneInfo$`Optimal genotype`[row]){
+      # add gene score to total score
+      totalScore = totalScore + 2
+      print(geneInfo$`Optimal genotype`[row])}
+    # return error if variant doesn't match with any variant for that gene
+    else{
+      return(cat("Something went wrong. Check format of variant for",
+                geneInfo$`Gene abbreviation`[row],". Variant should be one of: ",
+                geneInfo$`Unfavourable genotype`[row], ",",
+          geneInfo$`Neutral genotype`[row], ", or",
+          geneInfo$`Optimal genotype`[row],". "))
+    }
+    }
+  # calculate and return total genetic score
+  totalScore = (100/46)*totalScore
+  return(cat("Your total genetic score is: ", totalScore))
+}
+
+geneOverview <- function(file){
+  # read excel file with user provided genetic profile
+  data <- read_excel(file)
+  unfavourable <- data.frame(Gene= character(0), Function= character(0))
+  neutral <- data.frame(Gene= character(0), Function= character(0))
+  optimal <- data.frame(Gene= character(0), Function= character(0))
+  row <- 0
+  for (genotype in data$Variant) {
+    row <- row + 1
+    # check if variant is unfavourable
+    if (genotype %in% geneInfo$`Unfavourable genotype`[row]){
+      # add gene to unfavourable data frame
+      unfavourable <- rbind(unfavourable,
+                            data.frame(Gene= geneInfo$`Gene abbreviation`[row],
+                                       Function= geneInfo$Function[row]))}
+
+    # check if variant if netural
+    else if (genotype %in% geneInfo$`Neutral genotype`[row]){
+      # add gene to neutral data frame
+      neutral <- rbind(neutral,
+                            data.frame(Gene= geneInfo$`Gene abbreviation`[row],
+                                       Function= geneInfo$Function[row]))}
+    # check if variant is optimal
+    else if (genotype %in% geneInfo$`Optimal genotype`[row]){
+      # add gene to optimal data frame
+      optimal <- rbind(optimal,
+                            data.frame(Gene= geneInfo$`Gene abbreviation`[row],
+                                       Function= geneInfo$Function[row]))}
+    # return error if variant doesn't match with any variant for that gene
+    else{
+      return(cat("Something went wrong. Check format of variant for",
+                 geneInfo$`Gene abbreviation`[row],". Variant should be one of: ",
+                 geneInfo$`Unfavourable genotype`[row], ",",
+                 geneInfo$`Neutral genotype`[row], ", or",
+                 geneInfo$`Optimal genotype`[row],". "))}
+  }
+  # open dataframe with optimal genes in data and their function
+  View(optimal)
+  # open dataframe with unfavourable genes in data and their function
+  View(unfavourable)
+  # open dataframe with neutral genes in data and their function
+  View(neutral)
+  return(invisible(NULL))
+  }
+
+athleteProfile1(type, file){
+  # score
+  # gene overview
+  # training recommendations
+  # health recommendations
+
+  if (type == "score") {
+    return(userScore(file))
+  }
+  else if (type == "gene overview"){
+    return(geneOverview(file))
+  }
+  else if (type == "training recommendations"){
+
+  }
+}
+
 genotypeProb <- function(){
 # 23 gene polymorphisms that will be used to calculate the athletic performance prediction score
 gene <- c("ACE2", "ACTN3","ADRA2A","ADRB2","AMPD1","APOE","ATP1A2","ATP1A2x",
@@ -69,10 +169,6 @@ score <- c(sample(c(0,1,2), 1, replace=TRUE, prob = c(0.29,0.50, 0.21)),
 # storing the data in a data frame
 df <- data.frame(gene, score)
 return(df)
-}
-
-readData <- function(){
-
 }
 
 #'Function: calculateTGS()
