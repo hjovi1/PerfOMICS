@@ -71,6 +71,10 @@ df <- data.frame(gene, score)
 return(df)
 }
 
+readData <- function(){
+
+}
+
 #'Function: calculateTGS()
 #'
 #'Purpose: Total genotype score (TGS) reflects the additive effect of genotypes
@@ -178,7 +182,7 @@ athleteProfile <- function(){
 generateDataSet <- function(n) {
   df = data.frame()
   for (x in 1:n){
-    output = calculateTGS()
+    output = PerfOMICS::calculateTGS()
     df = rbind(df, output)
   }
   colnames(df)<-c("TGS")
@@ -197,13 +201,8 @@ generateDataSet <- function(n) {
 #'@import Hmisc lattice survival Formula ggplot2
 #'
 generateFreqPlot <- function(n=100){
-  # install.packages("Hmisc")
-  #library("lattice")
-  #library("survival")
-  #library("Formula")
-  #library("ggplot2")
-  #library("Hmisc")
   plot <- hist.data.frame(generateDataSet(n))
+  return(invisible(NULL))
 }
 
 #'Plot function: generateBoxPlot(n)
@@ -219,9 +218,10 @@ generateFreqPlot <- function(n=100){
 #'
 generateBoxPlot <- function(n=100){
   # install.packages("graphics")
-  library(graphics) # to load and attach
+  # library(graphics) # to load and attach
   dataset <- generateDataSet(n)
   box <- boxplot(dataset) # boxplot
+  return(invisible(NULL))
 }
 
 #[END] Written by Helena Jovic
