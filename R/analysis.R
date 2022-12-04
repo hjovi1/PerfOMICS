@@ -1,29 +1,24 @@
-#' Purpose: Use contribed datasets of researched-backed polygenic information
-#' to analyze and visualize predicted athletic endurance performances of
-#' individuals based on their polygenic athlete profile and total genotype score.
-#' Author: Helena Jovic
-#' Date: November 11, 2022
-#' Version: 1.0
-#' Bugs and Issues:
+#' This function is used to calculate a genetic score on a scale of 0 to 100
+#' of an individual genetic profile of 23 gene polymorphisms.
 #'
-#' Before each session run this in console
-#' library(devtools)
-#' library(roxygen2)
-#' library(testthat)
-#' library(knitr)
+#' The function uses an algorithm proposed by Williams and Folland in 2008,
+#' which is based on researched associations between certain variants and
+#' athletic endurance performance.
 #'
-#' Function: genotypeProb()
-#' A function that compiles genetic information of 23 genes associated with
-#' endurance athletic ability. The function uses researched statistical data
-#' on the frequencies of the genotypes of each gene to generate a polygenic
-#' profile to predict athletic endurance performance. Each genotype is paired
-#' with a respective genetic score, revealing how favourable (0 = unfavourable,
-#' 1 = neutral, 2 = favourable) each genotype is for athletic endurance ability.
+#' Understanding your score: a score of 0, means every gene in your genetic
+#' profile is unfavourable for athletic endurance performance, whereas a score
+#' of 100 means every gene in your genetic profile is optimal for athletic
+#' endurance performance.
 #'
+#' @import readxl
+#' @param file containing individual data set
+#' @return scatter plot with regression
 #' @export
-#' @return a dataframe containing a column of genes associated with athletic
-#' ability and a corresponding column of scores paired with each gene for one
-#' individual.
+#' @examples
+#' Example 1 of Non-Power Speed Profile:
+#' powerSpeed("Ind2.xlsx")
+#' Example 2 of a Power Speed Profile:
+#' powerSpeed("Ind3.xlsx") #'
 #'
 #' @references
 #' Kambouris, M., Ntalouka, F., Ziogas, G., & Maffulli, N. (2012).
@@ -36,10 +31,9 @@
 #' 2022 Mar;39(2):355-366. doi: 10.5114/biolsport.2022.105333.
 #' Epub 2021 Apr 21. PMID: 35309536; PMCID: PMC8919892.
 #'
-#'@import readr
 userScore <- function(file){
   # read excel file with user provided genetic profile
-  data <- read_excel(file)
+  data <- readxl::read_excel(file)
   # initialize total genetic score at 0
   totalScore <- 0
   row <- 0
@@ -75,10 +69,24 @@ userScore <- function(file){
   return(cat("Your total genetic score is: ", totalScore))
 }
 
-#'@import readr
+#' This function is used to provide an overview of a user's genetic profile.
+#'
+#' The function categorizes each gene's variant into three buckets:
+#' unfavorable, neutral and optimal for athletic performance.
+#'
+#' This function returns three data frames summarizing the genes and their functions.
+#'
+#' @import readxl readr
+#' @param file containing individual data set
+#' @return scatter plot with regression
+#' @export
+#' @examples
+#' powerSpeed("Ind2.xlsx")
+#' @references
+#'@import readxl
 geneOverview <- function(file){
   # read excel file with user provided genetic profile
-  data <- read_excel(file)
+  data <- readxl::read_excel(file)
   # create empty data frame to store unfavourable genes for individual profile
   unfavourable <- data.frame(Gene= character(0), Variant= character(0),
                              Function= character(0))
@@ -130,12 +138,31 @@ geneOverview <- function(file){
   return(invisible(NULL))
 }
 
+#' This function is used to provide user's a power speed analysis on their genetic
+#' profile.
+#'
+#' The function checks for matches between a user's genetic profile and the optimal
+#' variants for genes associated with power and speed ability.
+#'
+#' This function returns the associated genotypes, their effect on sports performance
+#' and recommended training.
+#'
+#' @import readxl readr
+#' @param file containing individual data set
+#' @return scatter plot with regression
+#' @export
+#' @examples
+#' Example 1 of Non-Power Speed Profile:
+#' powerSpeed("Ind2.xlsx")
+#' Example 2 of a Power Speed Profile:
+#' powerSpeed("Ind3.xlsx")
+#' @references
 powerSpeed <- function(file){
+  library(readr)
   # read excel file with user provided genetic profile
-  data <- read_excel(file)
+  data <- readxl::read_excel(file)
   powerspeedGenes <- list()
   row <- 0
-
 
   for (gene in data$Gene) {
     row <- row + 1
@@ -166,36 +193,12 @@ powerSpeed <- function(file){
     }
   }
   # Let user know which power speed associations match with their profile
-  cat("You have ", length(powerSpeedGenes), "genes out of 4 that associate with a
-        Genetic Profile of an Individual Favoring Speed and Strength Performance
-        . These genes are: ", powerspeedGenes, "View the effect on training of
-      these genes and training recommendations for this profile in the powerspeed
-      tab.")
+  cat("You have ", length(powerspeedGenes),
+      "genes out of 4 that associate with power and speed. Review each associated genotype's effect on athletic performance and recommended training.")
   # Show user each genotype's effect on training and training recommendations
+  powerspeed <- read_csv("powerspeed.csv")
   View(powerspeed)
   return(invisible(NULL))
-}
-
-athleteProfile <- function(type, file){
-  # Show user their total genetic score for athletic performance
-  if (type == "score") {
-    return(userScore(file))
-  }
-  # Show user the gene's in their athletic profile that are optimal, neutral,
-  # and unfavourable for athletic performance
-  else if (type == "gene overview"){
-    return(geneOverview(file))
-  }
-  # Show user how much their genetic profile matches with that of an optimal
-  # power-speed athlete and return effects on training and training recommendations
-  else if (type == "powerspeed")
-    return(powerspeed(file))
-  # If incorrect type or file is entered return error message
-  else{
-    return("Error, please review your input for (type, file). For type:
-    Please select from:'score', 'gene overview' and 'powerspeed'.
-    Check that the proper file is being called.")
-  }
 }
 
 #[END] Written by Helena Jovic

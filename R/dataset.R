@@ -1,4 +1,21 @@
-dataset <- function(){
+#' This function is used to generate and save a dataset of entries containing
+#' 23 gene polymorphisms associatied with athletic endurance performance ability
+#' as well as cardiovascular fitness level.
+#'
+#' Each gene and their variants has a researched frequency in large populations.
+#' This dataset uses these probabilities to generate a contribed dataset suitable
+#' for the purposes of this R package. The cardiovascular fitness of each entry
+#' is based on the genetic score.
+#'#'
+#' @import dplyr plyr stats
+#' @param entries number of individuals to create data for
+#' @return a saved dataset as an RDA file with entries number of individuals
+#' @export
+#' @examples
+#' dataset(100)
+#' @references
+
+dataset <- function(entries){
   ds = data.frame(
     "ACE"= integer(0),
     "ACTN3"= integer(0),
@@ -23,7 +40,7 @@ dataset <- function(){
     "UCP2"= integer(0),
     "VEGFA"= integer(0))
 
-  for (x in 1:100){
+  for (x in 1:entries){
     ds = rbind(ds, data.frame(
       "ACE"= sample(c(0,1,2), 1, replace=TRUE, prob = c(0.29,0.50, 0.21)),
       "ACTN3"= sample(c(0,1,2), 1, replace=TRUE, prob = c(0.30,0.52, 0.18)),
@@ -50,26 +67,27 @@ dataset <- function(){
       "VEGFA"= sample(c(0,1,2), 1, replace=TRUE, prob = c(0.25,0.45, 0.30))))
   }
   ds$Score = (100/46)*rowSums(ds, na.rm = T)
-  for (x in 1:100){
+  for (x in 1:entries){
     if (ds$Score[x] < 20){
       fitness = runif(1, 0.0, 1.0)
       ds$Fitness[x] = fitness
     }
     else if (ds$Score[x] >= 20 & ds$Score[x] < 35){
-      fitness = runif(1, 1.0, 2.0)
+      fitness = stats::runif(1, 1.0, 2.0)
       ds$Fitness[x] = fitness    }
     else if (ds$Score[x] >= 35 & ds$Score[x] < 45){
-      fitness = runif(1, 2.0, 3.0)
+      fitness = stats::runif(1, 2.0, 3.0)
       ds$Fitness[x] = fitness    }
     else if (ds$Score[x] >= 45 & ds$Score[x] < 55){
-      fitness = runif(1, 3.0, 4.0)
+      fitness = stats::runif(1, 3.0, 4.0)
       ds$Fitness[x] = fitness    }
     else if (ds$Score[x] >= 55 & ds$Score[x] < 65){
-      fitness = runif(1, 4.0, 5.0)
+      fitness = stats::runif(1, 4.0, 5.0)
       ds$Fitness[x] = fitness    }
     else  if (ds$Score[x] >= 65){
-      fitness = runif(1, 5.0, 6.0)
+      fitness = stats::runif(1, 5.0, 6.0)
       ds$Fitness[x] = fitness    }
   }
   View(ds)
+  save(ds, file="dataset.Rda")
 }
