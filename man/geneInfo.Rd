@@ -15,4 +15,6 @@ TGS calculation (name of gene, function of gene, variants and frequencies).
 }
 \details{
 Outputs the references used to gather information on the 23 gene polymorphisms.
+
+# 'data.frame':    96 obs. of  8 variables:
 }
