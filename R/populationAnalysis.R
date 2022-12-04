@@ -1,22 +1,15 @@
 plots <-function(file){
   # read excel file with user provided genetic profile
   data <- read_excel(file)
-  p <- plot(data$"Score", data$"Fitness", pch = 19, col = "lightblue")
-
-  # Regression line
-  abline(lm(y ~ x), col = "red", lwd = 3)
-
-  # Pearson correlation
-  text(paste("Correlation:", round(cor(x, y), 2)), x = 25, y = 95)
+  x <- data$Score
+  y <- data$Fitness
+  # Plot with main and axis titles
+  # Change point shape (pch = 19) and remove frame.
+  p <-plot(x, y, main = "Scatterplot with Regression",
+       xlab = "Athletic Performance Score", ylab = "Cardiovascular Fitness 1 = lowest, 6 = maximum",
+       pch = 19, frame = FALSE)
+  abline(lm(y ~ x, data = mtcars), col = "blue")
   return(p)
-
-  #library("ggpubr")
-  #plot <- ggscatter(df, x = "Score", y = "Fitness",
-  #add = "reg.line", conf.int = TRUE,
-  #cor.coef = TRUE, cor.method = "kendall",
-  #xlab = "Athletic Endurance Score", ylab = "Cardiovascular Fitness (VO2 Max)")
-  #return(plot)
-
 
   freplot <- hist(data, main = "Frequency of Scores", # Title
                   sub = "Based on 23-polymorphisms", # Subtitle
@@ -24,7 +17,7 @@ plots <-function(file){
                   ylab = "Frequency",
                   color = 'blue')           # Y-axis label
 
-  return(freplot)
+  #return(freplot)
 }
 
 #[END] Written by Helena Jovic
