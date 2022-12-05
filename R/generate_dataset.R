@@ -7,13 +7,10 @@
 #' for the purposes of this R package. The cardiovascular fitness of each entry
 #' is based on the genetic score.
 #'#'
-#' @import dplyr plyr stats
 #' @param entries number of individuals to create data for
-#' @return a saved dataset as an RDA file with entries number of individuals
+#' @return a dataset in the form of a data frame with entries number of individuals
 #' @export
-#' @examples
-#' dataset(100)
-#' @references
+#'
 
 dataset <- function(entries){
   ds = data.frame(
@@ -88,6 +85,7 @@ dataset <- function(entries){
       fitness = stats::runif(1, 5.0, 6.0)
       ds$Fitness[x] = fitness    }
   }
-  View(ds)
-  save(ds, file="dataset.Rda")
+  # save(ds, file="dataset.Rda")
 }
+
+#[END] Written by Helena Jovic
