@@ -2,20 +2,32 @@
 % Please edit documentation in R/gene_overview.R
 \name{geneOverview}
 \alias{geneOverview}
-\title{This function is used to provide an overview of a user's genetic profile.}
+\title{This function is used to provide an overview of a user's genetic profile by
+categorizing each gene's variant into three buckets: unfavorable, neutral
+and optimal for athletic endurance performance.}
 \usage{
-geneOverview(file)
+geneOverview(data)
 }
 \arguments{
-\item{file}{containing individual data set}
+\item{data}{containing individual data set of 23 gene polymorphisms}
 }
 \value{
-scatter plot with regression
+this function returns three data frames summarizing the genes and
+their functions.
 }
 \description{
-The function categorizes each gene's variant into three buckets:
-unfavorable, neutral and optimal for athletic performance.
+This function is used to provide an overview of a user's genetic profile by
+categorizing each gene's variant into three buckets: unfavorable, neutral
+and optimal for athletic endurance performance.
 }
-\details{
-This function returns three data frames summarizing the genes and their functions.
+\examples{
+# Example:
+
+# First load the individual dataset included in the package
+ds <- system.file("extdata", "Ind2.xlsx", package = "PerfOMICS")
+data <- readxl::read_excel(ds)
+
+# Generate summary using dataset
+geneOverview(data)
+
 }

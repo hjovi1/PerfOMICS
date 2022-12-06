@@ -3,26 +3,35 @@
 \name{userScore}
 \alias{userScore}
 \title{This function is used to calculate a genetic score on a scale of 0 to 100
-of an individual genetic profile of 23 gene polymorphisms.}
+of an individual genetic profile of 23 gene polymorphisms, using an algorithm
+proposed by Williams and Folland in 2008. The algorithm is based on researched
+associations between certain variants and athletic endurance performance.}
 \usage{
-userScore(file)
+userScore(data)
 }
 \arguments{
-\item{file}{containing individual data set}
+\item{data}{containing individual data set}
 }
 \value{
-scatter plot with regression
+a genetic score on a scale of 0 to 100 of athletic performance
+ability and an individual's genetic profile, using 23 gene polymorphisms.
 }
 \description{
-The function uses an algorithm proposed by Williams and Folland in 2008,
-which is based on researched associations between certain variants and
-athletic endurance performance.
-}
-\details{
 Understanding your score: a score of 0, means every gene in your genetic
 profile is unfavourable for athletic endurance performance, whereas a score
 of 100 means every gene in your genetic profile is optimal for athletic
 endurance performance.
+}
+\examples{
+# Example:
+
+# First load the individual dataset included in the package
+ds <- system.file("extdata", "Ind2.xlsx", package = "PerfOMICS")
+data <- readxl::read_excel(ds)
+
+# Generate histogram using dataset
+userScore(data)
+
 }
 \references{
 Kambouris, M., Ntalouka, F., Ziogas, G., & Maffulli, N. (2012).

@@ -9,7 +9,6 @@
 #'#'
 #' @param entries number of individuals to create data for
 #' @return a dataset in the form of a data frame with entries number of individuals
-#' @export
 #'
 
 dataset <- function(entries){

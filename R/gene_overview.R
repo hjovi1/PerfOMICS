@@ -1,16 +1,26 @@
-#' This function is used to provide an overview of a user's genetic profile.
+#' This function is used to provide an overview of a user's genetic profile by
+#' categorizing each gene's variant into three buckets: unfavorable, neutral
+#' and optimal for athletic endurance performance.
 #'
-#' The function categorizes each gene's variant into three buckets:
-#' unfavorable, neutral and optimal for athletic performance.
+#' @param data containing individual data set of 23 gene polymorphisms
+#' @return this function returns three data frames summarizing the genes and
+#' their functions.
 #'
-#' This function returns three data frames summarizing the genes and their functions.
+#' @examples
+#' # Example:
 #'
-#' @param file containing individual data set
-#' @return scatter plot with regression
+#' # First load the individual dataset included in the package
+#' ds <- system.file("extdata", "Ind2.xlsx", package = "PerfOMICS")
+#' data <- readxl::read_excel(ds)
+#'
+#' # Generate summary using dataset
+#' geneOverview(data)
+#'
 #' @export
-geneOverview <- function(file){
-  # read excel file with user provided genetic profile
-  data <- readxl::read_excel(file)
+
+geneOverview <- function(data){
+  genecsv <- system.file("extdata", "geneInfo.csv", package = "PerfOMICS")
+  geneInfo <- readr::read_csv(genecsv)
   # create empty data frame to store unfavourable genes for individual profile
   unfavourable <- data.frame(Gene= character(0), Variant= character(0),
                              Function= character(0))
@@ -21,8 +31,8 @@ geneOverview <- function(file){
   optimal <- data.frame(Gene= character(0), Variant= character(0),
                         Function= character(0))
   row <- 0
-  for (genotype in data$Variant) {
-    row <- row + 1
+  for (genotype in data$Variant){
+    row = row + 1
     # check if variant is unfavourable
     if (genotype %in% geneInfo$`Unfavourable genotype`[row]){
       # add gene to unfavourable data frame
@@ -53,11 +63,6 @@ geneOverview <- function(file){
                  geneInfo$`Neutral genotype`[row], ", or",
                  geneInfo$`Optimal genotype`[row],". "))}
   }
-  # open dataframe with optimal genes in data and their function
-  View(optimal)
-  # open dataframe with unfavourable genes in data and their function
-  View(unfavourable)
-  # open dataframe with neutral genes in data and their function
-  View(neutral)
-  return(invisible(NULL))
+
+  return("Now type, 'View(optimal)', 'View(neutral)', 'View(unfavourable)' in your R console")
 }

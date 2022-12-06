@@ -1,20 +1,25 @@
 #' This function is used to provide user's a power speed analysis on their genetic
-#' profile.
-#'
-#' The function checks for matches between a user's genetic profile and the optimal
+#' profile by checking for matches between a user's genetic profile and the optimal
 #' variants for genes associated with power and speed ability.
 #'
-#' This function returns the associated genotypes, their effect on sports performance
-#' and recommended training.
+#' @param data containing individual data set
 #'
-#' @param file containing individual data set
-#' @return scatter plot with regression
+#' @return the associated genotypes in an individual profile, each genotype's
+#' effect on sports performance and the corresponding recommended training.
+#'
+#' @examples
+#' # Example:
+#'
+#' # First load the individual dataset included in the package
+#' ds <- system.file("extdata", "Ind2.xlsx", package = "PerfOMICS")
+#' data <- readxl::read_excel(ds)
+#'
+#' # Generate histogram using dataset
+#' powerSpeed(data)
+#'
 #' @export
 #'
-powerSpeed <- function(file){
-  library(readr)
-  # read excel file with user provided genetic profile
-  data <- readxl::read_excel(file)
+powerSpeed <- function(data){
   powerspeedGenes <- list()
   row <- 0
 
@@ -50,9 +55,10 @@ powerSpeed <- function(file){
   cat("You have ", length(powerspeedGenes),
       "genes out of 4 that associate with power and speed. Review each associated genotype's effect on athletic performance and recommended training.")
   # Show user each genotype's effect on training and training recommendations
-  powerspeed <- read_csv("powerspeed.csv")
-  View(powerspeed)
-  return(invisible(NULL))
+
+  ps <- system.file("extdata", "powerspeed.csv", package = "PerfOMICS")
+  powerspeed <- readr::read_csv(ps)
+  return("Now type 'View(powerspeed)' in your R console.")
 }
 
 #[END] Written by Helena Jovic

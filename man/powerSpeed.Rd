@@ -3,21 +3,31 @@
 \name{powerSpeed}
 \alias{powerSpeed}
 \title{This function is used to provide user's a power speed analysis on their genetic
-profile.}
+profile by checking for matches between a user's genetic profile and the optimal
+variants for genes associated with power and speed ability.}
 \usage{
-powerSpeed(file)
+powerSpeed(data)
 }
 \arguments{
-\item{file}{containing individual data set}
+\item{data}{containing individual data set}
 }
 \value{
-scatter plot with regression
+the associated genotypes in an individual profile, each genotype's
+effect on sports performance and the corresponding recommended training.
 }
 \description{
-The function checks for matches between a user's genetic profile and the optimal
+This function is used to provide user's a power speed analysis on their genetic
+profile by checking for matches between a user's genetic profile and the optimal
 variants for genes associated with power and speed ability.
 }
-\details{
-This function returns the associated genotypes, their effect on sports performance
-and recommended training.
+\examples{
+# Example:
+
+# First load the individual dataset included in the package
+ds <- system.file("extdata", "Ind2.xlsx", package = "PerfOMICS")
+data <- readxl::read_excel(ds)
+
+# Generate histogram using dataset
+powerSpeed(data)
+
 }

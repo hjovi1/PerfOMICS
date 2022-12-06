@@ -2,9 +2,7 @@
 % Please edit documentation in R/scatter_plot.R
 \name{scatterPlot}
 \alias{scatterPlot}
-\title{This function is used to visualize a scatter plot of a variable in the provided
-data set and the cardiovascular fitness level of each individual in the data set.
-A regression line is added to show the trend in the data given in the scatter plot.}
+\title{scatterPlot}
 \usage{
 scatterPlot(data)
 }
@@ -12,15 +10,28 @@ scatterPlot(data)
 \item{data}{containing data set to be plotted}
 }
 \value{
-scatter plot with regression
+scatter plot with regression. X-axis: athletic performance score
+based on 23 gene polymorphisms associated with athletic performance.
+Y-axis: cardiovascular fitness on a scale of 1 lowest to 6 max based on
+VO2 max performance. A regression line is added to show trend in data given.
 }
 \description{
-X-axis: Athletic Performance Score is based on 23 gene polymorphisms associated with athletic performance.
-Y-axis: Cardiovascular Fitness on a scale of 1 lowest to 6 max based on VO2 max performance.
-}
-\details{
-This function returns a scatter plot and a regression line.
+This function is used to visualize a scatter plot of a variable in the provided
+data set and the cardiovascular fitness level of each individual in the data set.
+A regression line is added to show the trend in the data given in the scatter plot.
 }
 \examples{
-scatterPlot(dataset)
+# Example:
+# First load the dataset included in the package
+ds <- system.file("extdata", "fake_dataset.xlsx", package = "PerfOMICS")
+data <- readxl::read_excel(ds)
+
+# Generate scatterplot using dataset
+scatterPlot(data)
+
+}
+\references{
+Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) The New S Language.
+Wadsworth & Brooks/Cole.Venables, W. N. and Ripley. B. D. (2002)
+Modern Applied Statistics with S. Springer.
 }
