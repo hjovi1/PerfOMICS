@@ -2,9 +2,7 @@
 % Please edit documentation in R/powerspeed_analysis.R
 \name{powerSpeed}
 \alias{powerSpeed}
-\title{This function is used to provide user's a power speed analysis on their genetic
-profile by checking for matches between a user's genetic profile and the optimal
-variants for genes associated with power and speed ability.}
+\title{powerSpeed}
 \usage{
 powerSpeed(data)
 }
@@ -16,9 +14,10 @@ the associated genotypes in an individual profile, each genotype's
 effect on sports performance and the corresponding recommended training.
 }
 \description{
-This function is used to provide user's a power speed analysis on their genetic
-profile by checking for matches between a user's genetic profile and the optimal
-variants for genes associated with power and speed ability.
+This function is used to provide user's a power speed analysis
+on their genetic profile by checking for matches between a user's genetic
+profile and the optimal variants for genes associated with power and speed
+ability.
 }
 \examples{
 # Example:

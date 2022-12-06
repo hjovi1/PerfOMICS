@@ -11,8 +11,6 @@
 #' Y-axis: cardiovascular fitness on a scale of 1 lowest to 6 max based on
 #' VO2 max performance. A regression line is added to show trend in data given.
 #'
-#' @export
-#'
 #' @examples
 #' # Example:
 #' # First load the dataset included in the package
@@ -26,6 +24,10 @@
 #' Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) The New S Language.
 #' Wadsworth & Brooks/Cole.Venables, W. N. and Ripley. B. D. (2002)
 #' Modern Applied Statistics with S. Springer.
+#'
+#' @export
+#'
+#' @importFrom stats lm
 
 scatterPlot <-function(data){
   x <- data$Score
@@ -43,11 +45,14 @@ scatterPlot <-function(data){
   return(p)
 }
 
-#' This function is used to visualize the relationship between genotype score of
+#' @title genotypeScatter
+#'
+#' @description This function is used to visualize the relationship between genotype score of
 #' a particular gene in an individual and their cardiovascular fitness level. A
 #' regression line is added to show the trend in the data given in the scatter plot.
 #'
-#' @param data containing data set to be plotted
+#' @param dataset containing data set to be plotted
+#'
 #' @param gene written in the format dataset$gene, corresponding to a column
 #'
 #' @return scatter plot with regression. X-axis: genotype score on scale of 0 to
@@ -72,6 +77,10 @@ scatterPlot <-function(data){
 #' Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) The New S Language.
 #' Wadsworth & Brooks/Cole.Venables, W. N. and Ripley. B. D. (2002)
 #' Modern Applied Statistics with S. Springer.
+#'
+#' @import graphics
+#'
+#' @importFrom stats lm
 #'
 #' @export
 

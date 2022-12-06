@@ -1,10 +1,13 @@
-#' This function is used to provide an overview of a user's genetic profile by
+#' @title geneOverview
+#'
+#' @description This function is used to provide an overview of a user's genetic profile by
 #' categorizing each gene's variant into three buckets: unfavorable, neutral
 #' and optimal for athletic endurance performance.
 #'
 #' @param data containing individual data set of 23 gene polymorphisms
-#' @return this function returns three data frames summarizing the genes and
-#' their functions.
+#'
+#' @return this function returns three saved data frames summarizing the genes
+#' and their functions
 #'
 #' @examples
 #' # Example:
@@ -17,6 +20,10 @@
 #' geneOverview(data)
 #'
 #' @export
+#'
+#' @import readr
+#'
+#' @importFrom plyr rbind.fill
 
 geneOverview <- function(data){
   genecsv <- system.file("extdata", "geneInfo.csv", package = "PerfOMICS")
@@ -36,7 +43,7 @@ geneOverview <- function(data){
     # check if variant is unfavourable
     if (genotype %in% geneInfo$`Unfavourable genotype`[row]){
       # add gene to unfavourable data frame
-      unfavourable <- rbind(unfavourable,
+      unfavourable <- plyr::rbind.fill(unfavourable,
                             data.frame(Gene= geneInfo$`Gene abbreviation`[row],
                                        Variant= geneInfo$`Unfavourable genotype`[row],
                                        Function= geneInfo$Function[row]))}
@@ -44,14 +51,14 @@ geneOverview <- function(data){
     # check if variant if netural
     else if (genotype %in% geneInfo$`Neutral genotype`[row]){
       # add gene to neutral data frame
-      neutral <- rbind(neutral,
+      neutral <- plyr::rbind.fill(neutral,
                        data.frame(Gene= geneInfo$`Gene abbreviation`[row],
                                   Variant= geneInfo$`Neutral genotype`[row],
                                   Function= geneInfo$Function[row]))}
     # check if variant is optimal
     else if (genotype %in% geneInfo$`Optimal genotype`[row]){
       # add gene to optimal data frame
-      optimal <- rbind(optimal,
+      optimal <- plyr::rbind.fill(optimal,
                        data.frame(Gene= geneInfo$`Gene abbreviation`[row],
                                   Variant= geneInfo$`Optimal genotype`[row],
                                   Function= geneInfo$Function[row]))}
@@ -66,3 +73,5 @@ geneOverview <- function(data){
 
   return("Now type, 'View(optimal)', 'View(neutral)', 'View(unfavourable)' in your R console")
 }
+
+#[END] Written by Helena Jovic

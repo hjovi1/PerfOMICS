@@ -2,16 +2,14 @@
 % Please edit documentation in R/scatter_plot.R
 \name{genotypeScatter}
 \alias{genotypeScatter}
-\title{This function is used to visualize the relationship between genotype score of
-a particular gene in an individual and their cardiovascular fitness level. A
-regression line is added to show the trend in the data given in the scatter plot.}
+\title{genotypeScatter}
 \usage{
 genotypeScatter(dataset, gene)
 }
 \arguments{
-\item{gene}{written in the format dataset$gene, corresponding to a column}
+\item{dataset}{containing data set to be plotted}
 
-\item{data}{containing data set to be plotted}
+\item{gene}{written in the format dataset$gene, corresponding to a column}
 }
 \value{
 scatter plot with regression. X-axis: genotype score on scale of 0 to

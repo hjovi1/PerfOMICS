@@ -1,11 +1,12 @@
-#' This function is used to calculate a genetic score on a scale of 0 to 100
-#' of an individual genetic profile of 23 gene polymorphisms, using an algorithm
-#' proposed by Williams and Folland in 2008. The algorithm is based on researched
-#' associations between certain variants and athletic endurance performance.
+#' @title userScore
 #'
-#' Understanding your score: a score of 0, means every gene in your genetic
-#' profile is unfavourable for athletic endurance performance, whereas a score
-#' of 100 means every gene in your genetic profile is optimal for athletic
+#' @description This function is used to calculate a genetic score on a scale of
+#' 0 to 100 of an individual genetic profile of 23 gene polymorphisms, using an
+#' algorithm proposed by Williams and Folland in 2008. The algorithm is based
+#' on researched associations between certain variants and athletic endurance
+#' performance. A score of 0, means every gene in the individual genetic profile
+#' is unfavourable for athletic endurance performance, whereas a score
+#' of 100 means every gene in the genetic profile is optimal for athletic
 #' endurance performance.
 #'
 #' @param data containing individual data set
@@ -28,6 +29,7 @@
 #' Predictive Genomics DNA Profiling for Athletic Performance. Recent patents
 #' on DNA & gene sequences, 6. doi:10.2174/187221512802717321
 #'
+#' @references
 #' Petr M, Thiel D, Kateřina K, Brož P, Malý T, Zahálka F, Vostatková P,
 #' Wilk M, Chycki J, Stastny P. Speed and power-related gene polymorphisms
 #' associated with playing position in elite soccer players. Biol Sport.
@@ -35,7 +37,7 @@
 #' Epub 2021 Apr 21. PMID: 35309536; PMCID: PMC8919892.
 #'
 #' @export
-#'
+
 userScore <- function(data){
   genecsv <- system.file("extdata", "geneInfo.csv", package = "PerfOMICS")
   geneInfo <- readr::read_csv(genecsv)
@@ -70,3 +72,5 @@ userScore <- function(data){
   totalScore = (100/46)*totalScore
   return(cat("Your total genetic score is: ", totalScore))
 }
+
+#[END] Written by Helena Jovic

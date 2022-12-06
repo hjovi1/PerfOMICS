@@ -2,8 +2,7 @@
 % Please edit documentation in R/histo_plot.R
 \name{scoreHistogram}
 \alias{scoreHistogram}
-\title{This function is used to visualize a histogram of the genetic scores
-of each individual in the data set and a regression line.}
+\title{scoreHistogram}
 \usage{
 scoreHistogram(data)
 }
@@ -11,9 +10,10 @@ scoreHistogram(data)
 \item{data}{object containing data set to be plotted}
 }
 \value{
-a histogram to visualize gene scores. X-axis is the athletic performance
-score based on 23 gene polymorphisms associated with athletic performance.
-Y-axis is the density of the gene scores. The graph outputs a density line.
+a histogram with a density line to visualize gene scores.
+X-axis is the athletic performance score based on 23 gene polymorphisms
+associated with athletic performance. Y-axis is the density of the gene
+scores.
 }
 \description{
 This function is used to visualize a histogram of the genetic scores

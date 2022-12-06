@@ -1,17 +1,32 @@
-#' This function is used to generate and save a dataset of entries containing
-#' 23 gene polymorphisms associatied with athletic endurance performance ability
-#' as well as cardiovascular fitness level.
+#' @title generateDataset
 #'
-#' Each gene and their variants has a researched frequency in large populations.
-#' This dataset uses these probabilities to generate a contribed dataset suitable
-#' for the purposes of this R package. The cardiovascular fitness of each entry
-#' is based on the genetic score.
-#'#'
+#' @description This function is used to generate and save a dataset of entries
+#' containing 23 gene polymorphisms associatied with athletic endurance
+#' performance ability as well as cardiovascular fitness level. Each gene and
+#' their variants has a researched frequency in large populations. This dataset
+#' uses these probabilities to generate a contribed dataset suitable for the
+#' purposes of this R package. The cardiovascular fitness of each entry is based
+#' on the genetic score.
+#'
 #' @param entries number of individuals to create data for
+#'
 #' @return a dataset in the form of a data frame with entries number of individuals
 #'
+#' @examples \dontrun{
+#' generateDataset(100)
+#' }
+#'
+#' @references
+#' Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) The New S Language.
+#' Wadsworth & Brooks/Cole.
+#'
+#' @export
+#'
+#' @importFrom plyr rbind.fill
+#'
+#' @importFrom stats runif
 
-dataset <- function(entries){
+generateDataset <- function(entries){
   ds = data.frame(
     "ACE"= integer(0),
     "ACTN3"= integer(0),
@@ -37,7 +52,7 @@ dataset <- function(entries){
     "VEGFA"= integer(0))
 
   for (x in 1:entries){
-    ds = rbind(ds, data.frame(
+    ds = plyr::rbind.fill(ds, data.frame(
       "ACE"= sample(c(0,1,2), 1, replace=TRUE, prob = c(0.29,0.50, 0.21)),
       "ACTN3"= sample(c(0,1,2), 1, replace=TRUE, prob = c(0.30,0.52, 0.18)),
       "ADRA2A"= sample(c(0,1,2), 1, replace=TRUE, prob = c(0.30,0.52, 0.18)),
@@ -65,7 +80,7 @@ dataset <- function(entries){
   ds$Score = (100/46)*rowSums(ds, na.rm = T)
   for (x in 1:entries){
     if (ds$Score[x] < 20){
-      fitness = runif(1, 0.0, 1.0)
+      fitness = stats::runif(1, 0.0, 1.0)
       ds$Fitness[x] = fitness
     }
     else if (ds$Score[x] >= 20 & ds$Score[x] < 35){
@@ -84,6 +99,8 @@ dataset <- function(entries){
       fitness = stats::runif(1, 5.0, 6.0)
       ds$Fitness[x] = fitness    }
   }
+
+  return(invisible(NULL))
   # save(ds, file="dataset.Rda")
 }
 

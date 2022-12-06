@@ -2,9 +2,7 @@
 % Please edit documentation in R/gene_overview.R
 \name{geneOverview}
 \alias{geneOverview}
-\title{This function is used to provide an overview of a user's genetic profile by
-categorizing each gene's variant into three buckets: unfavorable, neutral
-and optimal for athletic endurance performance.}
+\title{geneOverview}
 \usage{
 geneOverview(data)
 }
@@ -12,8 +10,8 @@ geneOverview(data)
 \item{data}{containing individual data set of 23 gene polymorphisms}
 }
 \value{
-this function returns three data frames summarizing the genes and
-their functions.
+this function returns three saved data frames summarizing the genes
+and their functions
 }
 \description{
 This function is used to provide an overview of a user's genetic profile by

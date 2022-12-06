@@ -1,6 +1,9 @@
-#' This function is used to provide user's a power speed analysis on their genetic
-#' profile by checking for matches between a user's genetic profile and the optimal
-#' variants for genes associated with power and speed ability.
+#' @title powerSpeed
+#'
+#' @description This function is used to provide user's a power speed analysis
+#' on their genetic profile by checking for matches between a user's genetic
+#' profile and the optimal variants for genes associated with power and speed
+#' ability.
 #'
 #' @param data containing individual data set
 #'
@@ -16,6 +19,8 @@
 #'
 #' # Generate histogram using dataset
 #' powerSpeed(data)
+#'
+#' @import readr
 #'
 #' @export
 #'

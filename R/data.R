@@ -19,3 +19,4 @@
 #' }
 #' @source <https://physoc.onlinelibrary.wiley.com/doi/full/10.1113/jphysiol.2007.141887>
 "dataset"
+NULL

@@ -1,11 +1,14 @@
-#' This function is used to visualize a histogram of the genetic scores
+#' @title scoreHistogram
+#'
+#' @description This function is used to visualize a histogram of the genetic scores
 #' of each individual in the data set and a regression line.
 #'
 #' @param data object containing data set to be plotted
 #'
-#' @return a histogram to visualize gene scores. X-axis is the athletic performance
-#' score based on 23 gene polymorphisms associated with athletic performance.
-#' Y-axis is the density of the gene scores. The graph outputs a density line.
+#' @return a histogram with a density line to visualize gene scores.
+#' X-axis is the athletic performance score based on 23 gene polymorphisms
+#' associated with athletic performance. Y-axis is the density of the gene
+#' scores.
 #'
 #' @examples
 #' # Example:
@@ -23,6 +26,9 @@
 #' Modern Applied Statistics with S. Springer.
 #'
 #' @import graphics readxl
+#'
+#' @importFrom stats density
+#'
 #' @export
 
 scoreHistogram <- function(data){
@@ -38,4 +44,6 @@ scoreHistogram <- function(data){
   lines(density(scores), col="black", lwd=2)
   return(invisible(NULL))
 }
+
+#[END] Written by Helena Jovic
 

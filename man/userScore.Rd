@@ -2,10 +2,7 @@
 % Please edit documentation in R/genescore_analysis.R
 \name{userScore}
 \alias{userScore}
-\title{This function is used to calculate a genetic score on a scale of 0 to 100
-of an individual genetic profile of 23 gene polymorphisms, using an algorithm
-proposed by Williams and Folland in 2008. The algorithm is based on researched
-associations between certain variants and athletic endurance performance.}
+\title{userScore}
 \usage{
 userScore(data)
 }
@@ -17,9 +14,13 @@ a genetic score on a scale of 0 to 100 of athletic performance
 ability and an individual's genetic profile, using 23 gene polymorphisms.
 }
 \description{
-Understanding your score: a score of 0, means every gene in your genetic
-profile is unfavourable for athletic endurance performance, whereas a score
-of 100 means every gene in your genetic profile is optimal for athletic
+This function is used to calculate a genetic score on a scale of
+0 to 100 of an individual genetic profile of 23 gene polymorphisms, using an
+algorithm proposed by Williams and Folland in 2008. The algorithm is based
+on researched associations between certain variants and athletic endurance
+performance. A score of 0, means every gene in the individual genetic profile
+is unfavourable for athletic endurance performance, whereas a score
+of 100 means every gene in the genetic profile is optimal for athletic
 endurance performance.
 }
 \examples{
