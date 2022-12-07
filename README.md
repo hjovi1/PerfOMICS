@@ -44,8 +44,18 @@ require("devtools")
 #> Loading required package: devtools
 #> Loading required package: usethis
 devtools::install_github("hjovi1/PerfOMICS", build_vignettes = TRUE)
-#> Skipping install of 'PerfOMICS' from a github remote, the SHA1 (145d5365) has not changed since last install.
-#>   Use `force = TRUE` to force installation
+#> Downloading GitHub repo hjovi1/PerfOMICS@HEAD
+#> 
+#>      checking for file ‘/private/var/folders/p6/d8fhdj314xq0fczml73596c80000gn/T/RtmpNGaeGy/remotes5773276e89d2/hjovi1-PerfOMICS-f368467/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/p6/d8fhdj314xq0fczml73596c80000gn/T/RtmpNGaeGy/remotes5773276e89d2/hjovi1-PerfOMICS-f368467/DESCRIPTION’ (474ms)
+#>   ─  preparing ‘PerfOMICS’:
+#>      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
+#>   ─  installing the package to build vignettes
+#>      creating vignettes ...  ✔  creating vignettes (12.1s)
+#>   ─  checking for LF line-endings in source and make files and shell scripts
+#>   ─  checking for empty or unneeded directories
+#> ─  building ‘PerfOMICS_1.1.0.tar.gz’
+#>      
+#> 
 library("PerfOMICS")
 ```
 
@@ -134,6 +144,8 @@ browseVignettes("PerfOMICS")
 ## Contritbutions
 
 The author of the package is Helena Jovic.
+
+For each function:
 
 The generateFreqPlot function makes use of the ggplot R package to plot
 the frequency distribution of the TGS for n individual polygenic
