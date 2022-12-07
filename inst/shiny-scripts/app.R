@@ -21,8 +21,7 @@ ui <- fluidPage(
                 accept = ".xlsx"),
 
       tags$p("Upload a .xlsx file corresponding to the set of genetic profiles
-             you would like to visualize and analyze.
-             Sample data to download: https://github.com/hjovi1/PerfOMICS/blob/8128e2fec8f0d07d7f1b7cf0fc0ed38c1a0c3f06/inst/extdata/fake_dataset.xlsx"),
+             you would like to visualize and analyze"),
 
       # Horizontal line ----
       tags$hr(),
@@ -32,9 +31,7 @@ ui <- fluidPage(
                 multiple = FALSE,
                 accept = ".xlsx"),
 
-      tags$p("Upload a .xlsx file containing a single genetic profile for analysis.
-             Sample data to download: https://github.com/hjovi1/PerfOMICS/blob/8128e2fec8f0d07d7f1b7cf0fc0ed38c1a0c3f06/inst/extdata/Ind1.xlsx.
-             More sample data: https://github.com/hjovi1/PerfOMICS/blob/8128e2fec8f0d07d7f1b7cf0fc0ed38c1a0c3f06/inst/extdata/Ind2.xlsx"),
+      tags$p("Upload a .xlsx file containing a single genetic profile for analysis."),
 
       # Horizontal line ----
       tags$hr(),
@@ -58,31 +55,32 @@ ui <- fluidPage(
     # Main panel for displaying outputs ----
     mainPanel(
 
-      # Output: Tabset w/ variant 1 plot, variant 2 plot, and two variants
-      # overlapped ----
+      # Output: Tabset for each plotting function, analysis function and URL
+      # for downloadable data----
       tabsetPanel(type = "tabs",
                   tabPanel("Score Scatter Plot", plotOutput("plot1")),
                   tabPanel("Genotype Scatter Plot", plotOutput("plot2")),
                   tabPanel("Score Histogram", plotOutput("plot3")),
-                  tabPanel("User Score", verbatimTextOutput("score")),
+                  tabPanel("Gene Score", verbatimTextOutput("score")),
                   tabPanel("Optimal Genes", tableOutput("table1")),
                   tabPanel("Neutral Genes", tableOutput("table2")),
                   tabPanel("Unfavourable Genes", tableOutput("table3")),
                   tabPanel("Speed Power Overview", tableOutput("table4")),
-                  tabPanel("Speed Power Analysis", verbatimTextOutput("speed"))
+                  tabPanel("Speed Power Analysis", verbatimTextOutput("speed")),
+                  tabPanel("Data URL", verbatimTextOutput("data"))
       )
     )
   )
 )
 
 server <- function(input, output) {
-
+# Output for Score Scatter Plot
   output$plot1 <- renderPlot({
     req(input$dataset)
     data <- readxl::read_excel(input$dataset$datapath)
     scatterPlot(data)
   })
-
+# Output for Genotype Scatter Plot
   output$plot2 <- renderPlot({
     req(input$dataset)
     req(input$gene)
@@ -91,13 +89,13 @@ server <- function(input, output) {
     g = dataset[[input$gene]]
     genotypeScatter(dataset,g)
   })
-
+# Output for Score Histogram
   output$plot3 <- renderPlot({
     req(input$dataset)
     data <- readxl::read_excel(input$dataset$datapath)
     scoreHistogram(data)
   })
-
+# Output for Gene Score
   output$score <- renderText({
     req(input$data)
     ind <- readxl::read_excel(input$data$datapath)
@@ -105,45 +103,49 @@ server <- function(input, output) {
     paste("Your genetic score is:", s)
   })
 
-
+# Output for Optimal Genes
   output$table1 <- renderTable({
     req(input$data)
     ind <- readxl::read_excel(input$data$datapath)
     paste(geneOverview(ind))
     optimal
   })
-
+# Output for Neutral Genes
   output$table2 <- renderTable({
     req(input$data)
     ind <- readxl::read_excel(input$data$datapath)
     paste(geneOverview(ind))
     neutral
   })
-
+# Output for Unfavourable Genes
   output$table3 <- renderTable({
     req(input$data)
     ind <- readxl::read_excel(input$data$datapath)
     paste(geneOverview(ind))
     unfavourable
   })
-
+# Output for Speed Power Analysis
   output$speed <- renderText({
     req(input$data)
     ind <- readxl::read_excel(input$data$datapath)
     s <- powerSpeed(ind)
-    paste("You have ", s,
-          "genes that associate with power and speed.")
+    paste("Gene variant mach in your genetic profile!", s)
   })
-
+# Output for Speed Power Overview
   output$table4 <- renderTable({
     req(input$data)
     ind <- readxl::read_excel(input$data$datapath)
     paste(powerSpeed(ind))
     powerspeed
   })
+# Output for Data URL
+  output$data <- renderText({
+    paste("Dataset: https://github.com/hjovi1/PerfOMICS/blob/8128e2fec8f0d07d7f1b7cf0fc0ed38c1a0c3f06/inst/extdata/fake_dataset.xlsx,
+          Individual: https://github.com/hjovi1/PerfOMICS/blob/8128e2fec8f0d07d7f1b7cf0fc0ed38c1a0c3f06/inst/extdata/Ind1.xlsx,
+          Individual :https://github.com/hjovi1/PerfOMICS/blob/8128e2fec8f0d07d7f1b7cf0fc0ed38c1a0c3f06/inst/extdata/Ind2.xlsx")
+  })
 
 }
-
 
 # Create Shiny app
 shiny::shinyApp(ui, server)

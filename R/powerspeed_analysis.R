@@ -35,22 +35,22 @@ powerSpeed <- function(data){
     # check genotypes of genes that are associated with power and speed
     if (gene == 'ACE'){
       if (data$Variant[row] == 'DD'){
-        append(powerspeedGenes, gene)
+        powerspeedGenes <- append(powerspeedGenes, gene)
       }
     }
     else if (gene == 'HIF1A'){
-      if (data$Variant[row] == 'DD'){
-        append(powerspeedGenes, gene)
+      if (data$Variant[row] == 'TT'){
+        powerspeedGenes <- append(powerspeedGenes, gene)
         }
     }
     else if (gene == 'ACTN3'){
       if (data$Variant[row] == 'XX'){
-        append(powerspeedGenes, gene)
+        powerspeedGenes <- append(powerspeedGenes, gene)
       }
     }
     else if (gene == 'AMPD1'){
-      if (data$Variant[row] == 'GG'){
-        append(powerspeedGenes, gene)
+      if (data$Variant[row] == 'CC'){
+        powerspeedGenes <- append(powerspeedGenes, gene)
       }
     }
     else{
@@ -64,8 +64,8 @@ powerSpeed <- function(data){
   # Show user each genotype's effect on training and training recommendations
 
   ps <- system.file("extdata", "powerspeed.csv", package = "PerfOMICS")
-  powerspeed <- readr::read_csv(ps)
-  return(invisible(NULL))
+  overview <- readr::read_csv(ps)
+  return(powerspeedGenes)
 }
 
 #[END] Written by Helena Jovic

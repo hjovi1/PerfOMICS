@@ -27,13 +27,15 @@
 #'
 #' @export
 #'
+#' @import graphics
+#'
 #' @importFrom stats lm
 
 scatterPlot <-function(data){
   x <- data$Score
   y <- data$Fitness
   # plot with main and axis titles
-  p <-plot(x, y, main = "Score vs Fitness Scatterplot with Regression",
+  p <-graphics::plot(x, y, main = "Score vs Fitness Scatterplot with Regression",
            xlab = "Athletic Performance Score",
            ylab = "Cardiovascular Fitness 1 = lowest, 6 = maximum",
            las = 1,

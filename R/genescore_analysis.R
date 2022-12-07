@@ -36,6 +36,8 @@
 #' 2022 Mar;39(2):355-366. doi: 10.5114/biolsport.2022.105333.
 #' Epub 2021 Apr 21. PMID: 35309536; PMCID: PMC8919892.
 #'
+#' @import readr
+#'
 #' @export
 
 userScore <- function(data){

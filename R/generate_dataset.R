@@ -27,7 +27,7 @@
 #' @importFrom stats runif
 
 generateDataset <- function(entries){
-  ds = data.frame(
+  DS = data.frame(
     "ACE"= integer(0),
     "ACTN3"= integer(0),
     "ADRA2A"= integer(0),
@@ -52,7 +52,7 @@ generateDataset <- function(entries){
     "VEGFA"= integer(0))
 
   for (x in 1:entries){
-    ds = plyr::rbind.fill(ds, data.frame(
+    DS = plyr::rbind.fill(DS, data.frame(
       "ACE"= sample(c(0,1,2), 1, replace=TRUE, prob = c(0.29,0.50, 0.21)),
       "ACTN3"= sample(c(0,1,2), 1, replace=TRUE, prob = c(0.30,0.52, 0.18)),
       "ADRA2A"= sample(c(0,1,2), 1, replace=TRUE, prob = c(0.30,0.52, 0.18)),
@@ -77,31 +77,31 @@ generateDataset <- function(entries){
       "UCP2"= sample(c(0,1,2), 1, replace=TRUE, prob = c(0.35,0.48, 0.17)),
       "VEGFA"= sample(c(0,1,2), 1, replace=TRUE, prob = c(0.25,0.45, 0.30))))
   }
-  ds$Score = (100/46)*rowSums(ds, na.rm = T)
+  DS$Score = (100/46)*rowSums(DS, na.rm = T)
   for (x in 1:entries){
-    if (ds$Score[x] < 20){
+    if (DS$Score[x] < 20){
       fitness = stats::runif(1, 0.0, 1.0)
-      ds$Fitness[x] = fitness
+      DS$Fitness[x] = fitness
     }
-    else if (ds$Score[x] >= 20 & ds$Score[x] < 35){
+    else if (DS$Score[x] >= 20 & DS$Score[x] < 35){
       fitness = stats::runif(1, 1.0, 2.0)
-      ds$Fitness[x] = fitness    }
-    else if (ds$Score[x] >= 35 & ds$Score[x] < 45){
+      DS$Fitness[x] = fitness    }
+    else if (DS$Score[x] >= 35 & DS$Score[x] < 45){
       fitness = stats::runif(1, 2.0, 3.0)
-      ds$Fitness[x] = fitness    }
-    else if (ds$Score[x] >= 45 & ds$Score[x] < 55){
+      DS$Fitness[x] = fitness    }
+    else if (DS$Score[x] >= 45 & DS$Score[x] < 55){
       fitness = stats::runif(1, 3.0, 4.0)
-      ds$Fitness[x] = fitness    }
-    else if (ds$Score[x] >= 55 & ds$Score[x] < 65){
+      DS$Fitness[x] = fitness    }
+    else if (DS$Score[x] >= 55 & DS$Score[x] < 65){
       fitness = stats::runif(1, 4.0, 5.0)
-      ds$Fitness[x] = fitness    }
-    else  if (ds$Score[x] >= 65){
+      DS$Fitness[x] = fitness    }
+    else  if (DS$Score[x] >= 65){
       fitness = stats::runif(1, 5.0, 6.0)
-      ds$Fitness[x] = fitness    }
+      DS$Fitness[x] = fitness    }
   }
 
-  return(invisible(NULL))
-  # save(ds, file="dataset.Rda")
+  paste("Now enter View(DS) in your R console")
+  return(DS)
 }
 
 #[END] Written by Helena Jovic

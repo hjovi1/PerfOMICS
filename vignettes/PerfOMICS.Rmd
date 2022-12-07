@@ -113,9 +113,9 @@ use in this package:
     commands:
 
     ```{r}
-    # ds1 <- system.file("extdata", "Ind1.xlsx", package = "PerfOMICS")
-    # data1 <- readxl::read_excel(ds1)
-    # View(data1)
+    ds1 <- system.file("extdata", "Ind1.xlsx", package = "PerfOMICS")
+    data1 <- readxl::read_excel(ds1)
+    data1
     ```
 
 2.  `` `Ind2.xlsx` `` is another dataset containing the genetic profile
@@ -126,9 +126,9 @@ use in this package:
     commands:
 
     ```{r warning=FALSE}
-    # ds2 <- system.file("extdata", "Ind2.xlsx", package = "PerfOMICS")
-    # data2 <- readxl::read_excel(ds2)
-    # View(data2)
+    ds2 <- system.file("extdata", "Ind2.xlsx", package = "PerfOMICS")
+    data2 <- readxl::read_excel(ds2)
+    data2
     ```
 
 3.  `` `fake_dataset.xlsx` `` is a dataset containing genetic profiles
@@ -141,9 +141,9 @@ use in this package:
     commands:
 
     ```{r}
-    # ds <- system.file("extdata", "fake_dataset.xlsx", package = "PerfOMICS")
-    # dataset <- readxl::read_excel(ds)
-    # View(dataset)
+    ds <- system.file("extdata", "fake_dataset.xlsx", package = "PerfOMICS")
+    dataset <- readxl::read_excel(ds)
+    dataset
     ```
 
 ### **Using Functions for Individual Analysis**
@@ -161,7 +161,7 @@ gene in the genetic profile is optimal for athletic endurance
 performance.
 
 ```{r warning=FALSE}
-# userScore(data2)
+userScore(data2)
 ```
 
 #### `geneOverview:`
@@ -173,7 +173,7 @@ buckets: unfavorable, neutral and optimal for athletic endurance
 performance.
 
 ```{r warning=FALSE}
-# geneOverview(data2)
+geneOverview(data2)
 ```
 
 #### `powerSpeed:`
@@ -187,7 +187,7 @@ individual profile, each genotype's effect on sports performance and the
 corresponding recommended training.
 
 ```{r}
-# powerSpeed(data2)
+powerSpeed(data2)
 ```
 
 ### **Using Functions for Plotting**
@@ -200,7 +200,7 @@ individual in the data set. A regression line is added to show the trend
 in the data given in the scatter plot.
 
 ```{r}
-# scatterPlot(dataset)
+scatterPlot(dataset)
 ```
 
 #### `scoreHistogram:`
@@ -209,7 +209,7 @@ This function is used to visualize a histogram of the genetic score of
 each individual in the data set and a density line.
 
 ```{r}
-# scoreHistogram(dataset)
+scoreHistogram(dataset)
 ```
 
 #### `genotypeScatter:`
@@ -220,23 +220,23 @@ fitness level. A regression line is added to show the trend in the data
 given in the scatter plot.
 
 ```{r}
-# genotypeScatter(dataset,dataset$ACE)
+genotypeScatter(dataset,dataset$ACE)
 ```
 
 ### **Function for Generating a Dataset**
 
 #### `generateDataset:`
 
-This function is used to generate and save a dataset of entries
-containing 23 gene polymorphisms associatied with athletic endurance
-performance ability as well as cardiovascular fitness level. Each gene
-and their variants has a researched frequency in large populations. This
-dataset uses these probabilities to generate a contribed dataset
-suitable for the purposes of this R package. The cardiovascular fitness
-of each entry is based on the genetic score.
+This function is used to generate a dataset of entries containing 23
+gene polymorphisms associatied with athletic endurance performance
+ability as well as cardiovascular fitness level. Each gene and their
+variants has a researched frequency in large populations. This dataset
+uses these probabilities to generate a contribed dataset suitable for
+the purposes of this R package. The cardiovascular fitness of each entry
+is based on the genetic score.
 
 ```{r}
-# generateDataset(100)
+generateDataset(entries=20)
 ```
 
 ### Gene Information
@@ -246,9 +246,9 @@ genes used for this package. Information includes: function, position,
 genotypes, frequencies and sources where data was retrieved.
 
 ```{r}
-# infopath <- system.file("extdata", "geneInfo.csv", package = "PerfOMICS")
-# geneInfo <- readr::read_csv(infopath)
-# View(geneInfo)
+infopath <- system.file("extdata", "geneInfo.csv", package = "PerfOMICS")
+geneInfo <- readr::read_csv(infopath)
+geneInfo
 ```
 
 ### Launch Shiny App
@@ -331,25 +331,56 @@ Jovic, H. (2022) PerfOMICS. Unpublished. URL
 
 ## Other References
 
-[1] Kambouris, M., Ntalouka, F., Ziogas, G., & Maffulli, N. (2012).
-Predictive Genomics DNA Profiling for Athletic Performance. Recent
-patents on DNA & gene sequences, 6. <doi:10.2174/187221512802717321>
-
-[2] Petr M, Thiel D, Kateřina K, Brož P, Malý T, Zahálka F, Vostatková
-P, Wilk M, Chycki J, Stastny P. Speed and power-related gene
-polymorphisms associated with playing position in elite soccer players.
-Biol Sport. 2022 Mar;39(2):355-366. doi: 10.5114/biolsport.2022.105333.
-Epub 2021 Apr 21. PMID: 35309536; PMCID: PMC8919892.
-
-[3] Williams AG, Folland JP. Similarity of polygenic profiles limits the
-potential for elite human physical performance. J Physiol. 2008 Jan
-1;586(1):113-21. doi: 10.1113/jphysiol.2007.141887. Epub 2007 Sep 27.
-PMID: 17901117; PMCID: PMC2375556.
-
-[4] Ruiz, J. R., Arteta, D., Buxens, A., Artieda, M., Gómez-Gallego, F.,
-Santiago, C., \... Lucia, A. (2010). Can we identify a power-oriented
-polygenic profile? Journal of Applied Physiology, 108(3), 561--566.
-<doi:10.1152/japplphysiol.01242.2009>
+1.  Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) *The New S
+    Language.* Wadsworth & Brooks/Cole. Venables, W. N. and
+    Ripley. B. D. (2002). *Modern Applied Statistics with S. Springer*.
+2.  Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) *The New S
+    Language*. Wadsworth & Brooks/Cole. Murrell, P. (2005) *R Graphics*.
+    Chapman & Hall/CRC Press.
+3.  Chang W, Cheng J, Allaire J, Sievert C, Schloerke B, Xie Y, Allen J,
+    McPherson J, Dipert A, Borges B (2022). *shiny: Web Application
+    Framework for R*. R package version 1.7.3,
+    <https://CRAN.R-project.org/package=shiny>.
+4.  *File Upload*. (2022). RStudio Shiny Gallery,
+    <https://shiny.rstudio.com/gallery/file-upload.html>
+5.  *Function reference*. (2022). RStudio Shiny,
+    <https://shiny.rstudio.com/reference/shiny/1.7.3/>
+6.  Hadley Wickham (2011). The Split-Apply-Combine Strategy for Data
+    Analysis. *Journal of Statistical Software*, 40(1), 1-29. URL
+    <http://www.jstatsoft.org/v40/i01/>.
+7.  Kambouris, M., Ntalouka, F., Ziogas, G., & Maffulli, N. (2012).
+    Predictive Genomics DNA Profiling for Athletic Performance. Recent
+    patents on DNA & gene sequences, 6. <doi:10.2174/187221512802717321>
+8.  Petr M, Thiel D, Kateřina K, Brož P, Malý T, Zahálka F, Vostatková
+    P, Wilk M, Chycki J, Stastny P. Speed and power-related gene
+    polymorphisms associated with playing position in elite soccer
+    players. *Biol Sport*. 2022 Mar;39(2):355-366. doi:
+    10.5114/biolsport.2022.105333. Epub 2021 Apr 21. PMID: 35309536;
+    PMCID: PMC8919892.
+9.  *R Core Team (2012). R: A language and environment for statistical
+    computing. R Foundation for Statistical Computing, Vienna, Austria.
+    ISBN 3-900051-07-0, URL <http://www.R-project.org/>*
+10. RStudio Team (2022). RStudio: Integrated Development Environment
+    for R. RStudio, PBC, Boston, MA URL <http://www.rstudio.com/>.
+11. Ruiz, J. R., Arteta, D., Buxens, A., Artieda, M., Gómez-Gallego, F.,
+    Santiago, C., \... Lucia, A. (2010). Can we identify a
+    power-oriented polygenic profile? *Journal of Applied Physiology,*
+    108(3), 561--566. <doi:10.1152/japplphysiol.01242.2009>
+12. *Tabsets*. (2022). RStudio Shiny Gallery,
+    <https://shiny.rstudio.com/gallery/tabsets.html>
+13. Wickham, H. and Bryan, J. (2019) *readxl: Read Excel Files R Package
+    Version 1.3.1*.\
+    <https://CRAN.R-project.org/package=readxl>
+14. Wickham H, Hester J, Bryan J (2022). *readr: Read Rectangular Text
+    Data*. <https://readr.tidyverse.org,>
+    <https://github.com/tidyverse/readr.>
+15. Wickham H, Hester J, Chang W, Bryan J (2022). *devtools: Tools to
+    Make Developing R Packages Easier*. <https://devtools.r-lib.org/,>
+    <https://github.com/r-lib/devtools.>
+16. Williams AG, Folland JP. Similarity of polygenic profiles limits the
+    potential for elite human physical performance. *J Physiol*. 2008
+    Jan 1;586(1):113-21. doi: 10.1113/jphysiol.2007.141887. Epub 2007
+    Sep 27. PMID: 17901117; PMCID: PMC2375556.
 
 ```{r}
 sessionInfo()

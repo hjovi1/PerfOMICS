@@ -23,6 +23,7 @@ and optimal for athletic endurance performance.
 
 # First load the individual dataset included in the package
 ds <- system.file("extdata", "Ind2.xlsx", package = "PerfOMICS")
+library("readxl")
 data <- readxl::read_excel(ds)
 
 # Generate summary using dataset
