@@ -63,11 +63,12 @@ userScore <- function(data){
       totalScore = totalScore + 2}
     # return error if variant doesn't match with any variant for that gene
     else{
-      print(paste("Something went wrong. Check format of variant for",
+      stop(paste("Something went wrong. Check format of variant for",
                  geneInfo$`Gene abbreviation`[row],". Variant should be one of: ",
                  geneInfo$`Unfavourable genotype`[row], ",",
                  geneInfo$`Neutral genotype`[row], ", or",
                  geneInfo$`Optimal genotype`[row],". "))
+
     }
   }
   # calculate and return total genetic score
