@@ -38,7 +38,7 @@ scoreHistogram <- function(data){
             main="Histogram of Genetic Scores",
             xlab="Genetic Scores",
             xlim=c(0,100),
-            col="darkmagenta",
+            col="blue",
             freq=F,
             las=1)
   lines(density(scores), col="black", lwd=2)

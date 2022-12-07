@@ -26,7 +26,9 @@ ability.
 ds <- system.file("extdata", "Ind2.xlsx", package = "PerfOMICS")
 data <- readxl::read_excel(ds)
 
-# Generate histogram using dataset
+# Power speed analysis
 powerSpeed(data)
+
+# View(powerspeed)
 
 }

@@ -17,8 +17,10 @@
 #' ds <- system.file("extdata", "Ind2.xlsx", package = "PerfOMICS")
 #' data <- readxl::read_excel(ds)
 #'
-#' # Generate histogram using dataset
+#' # Power speed analysis
 #' powerSpeed(data)
+#'
+#' # View(powerspeed)
 #'
 #' @import readr
 #'
@@ -57,13 +59,13 @@ powerSpeed <- function(data){
     }
   }
   # Let user know which power speed associations match with their profile
-  cat("You have ", length(powerspeedGenes),
-      "genes out of 4 that associate with power and speed. Review each associated genotype's effect on athletic performance and recommended training.")
+  paste("You have ", length(powerspeedGenes),
+      "genes out of 4 that optimally associate with power and speed. Review each associated genotype's effect on athletic performance and recommended training.")
   # Show user each genotype's effect on training and training recommendations
 
   ps <- system.file("extdata", "powerspeed.csv", package = "PerfOMICS")
   powerspeed <- readr::read_csv(ps)
-  return("Now type 'View(powerspeed)' in your R console.")
+  return(invisible(NULL))
 }
 
 #[END] Written by Helena Jovic

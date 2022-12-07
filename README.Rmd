@@ -63,7 +63,7 @@ library("PerfOMICS")
 ## To run the ShinyApp
 
 ```{r}
-
+runApp('inst/shiny-scripts')
 ```
 
 ## Package Overview

@@ -34,13 +34,13 @@ scatterPlot <-function(data){
   y <- data$Fitness
   # plot with main and axis titles
   p <-plot(x, y, main = "Score vs Fitness Scatterplot with Regression",
-       xlab = "Athletic Performance Score",
-       ylab = "Cardiovascular Fitness 1 = lowest, 6 = maximum",
-       las = 1,
-       xlim = c(0,100),
-       ylim = c(1,6),
-       pch = 19, frame = FALSE,
-       col = 4)
+           xlab = "Athletic Performance Score",
+           ylab = "Cardiovascular Fitness 1 = lowest, 6 = maximum",
+           las = 1,
+           xlim = c(0,100),
+           ylim = c(1,6),
+           pch = 19, frame = FALSE,
+           col = 4)
   abline(lm(y~x), col=1)
   return(p)
 }
@@ -87,13 +87,13 @@ scatterPlot <-function(data){
 genotypeScatter <- function(dataset, gene){
   fitness <- dataset$Fitness
   p <-graphics::plot(gene, fitness, main = "Gene vs Fitness Scatterplot with Regression",
-           xlab = "Genotype Score of Gene",
-           ylab = "Cardiovascular Fitness 1 = lowest, 6 = maximum",
-           las = 1,
-           xlim = c(0,2),
-           ylim = c(1,6),
-           pch = 21, frame = FALSE,
-           col = 1)
+                     xlab = "Genotype Score of Gene",
+                     ylab = "Cardiovascular Fitness 1 = lowest, 6 = maximum",
+                     las = 1,
+                     xlim = c(0,2),
+                     ylim = c(1,6),
+                     pch = 21, frame = FALSE,
+                     col = 1)
   abline(lm(fitness~gene), col=4)
   return(p)
 }

@@ -38,7 +38,18 @@ ui <- fluidPage(
 
       # Input: Gene to be analyzed ----
       selectInput("gene", "Gene:",
-                  c("ACE" = 'ACE', "ACTN3" = 'ACTN3')),
+                  c("ACE" = 'ACE', "ACTN3" = 'ACTN3', "ADRA2A" = "ADRA2A",
+                    "ADRB2" = "ADRB2", "AMPD1" = "AMPD1", "APOE" = "APOE",
+                    "ATP1A2 (exon 1)" = "ATP1A2 (exon 1)", "ATP1A2 (exon 21-22)" =
+                    "ATP1A2 (exon 21-22)", "BDKRB2" = "BDKRB2", "CKM" = "CKM",
+                    "EPAS1 (hCV1639984)" = "EPAS1 (hCV1639984)", "EPAS1 (hCV2148918)" =
+                      "EPAS1 (hCV2148918)", "HFE" = "HFE", "HIF1A" = "HIF1A",
+                    "HLA-A" = "HLA-A", "MT-ND5 (12406)" = "MT-ND5 (12406)",
+                    "MT-ND5 (13365)" = "MT-ND5 (13365)", "MT-ND5 (13470)" =
+                      "MT-ND5 (13470)", "MT-TT" = "MT-TT", "PPARA" = "PPARA",
+                    "PPARGC1A" = "PPARGC1A", "UCP2" = "UCP2", "VEGFA" = "VEGFA")),
+
+      tags$p("Select the gene you would like to visualize."),
     ),
 
     # Main panel for displaying outputs ----
@@ -51,17 +62,16 @@ ui <- fluidPage(
                   tabPanel("Genotype Scatter Plot", plotOutput("plot2")),
                   tabPanel("Score Histogram", plotOutput("plot3")),
                   tabPanel("User Score", verbatimTextOutput("score")),
-                  tabPanel("Gene Overview", tableOutput("table1")),
-                  tabPanel("Speed Power Analysis", tableOutput("table2"))
+                  tabPanel("Optimal Genes", tableOutput("table1")),
+                  tabPanel("Neutral Genes", tableOutput("table2")),
+                  tabPanel("Unfavourable Genes", tableOutput("table3")),
+                  tabPanel("Speed Power Overview", tableOutput("table4")),
+                  tabPanel("Speed Power Analysis", verbatimTextOutput("speed"))
       )
     )
   )
 )
 
-
-# TODO: Change the server logic
-# Define server logic
-# Define server logic
 server <- function(input, output) {
 
   output$plot1 <- renderPlot({
@@ -73,9 +83,10 @@ server <- function(input, output) {
   output$plot2 <- renderPlot({
     req(input$dataset)
     req(input$gene)
-    g <- input$gene
-    data <- readxl::read_excel(input$dataset$datapath)
-    genotypeScatter(data,g)
+
+    dataset <- readxl::read_excel(input$dataset$datapath)
+    g = dataset[[input$gene]]
+    genotypeScatter(dataset,g)
   })
 
   output$plot3 <- renderPlot({
@@ -87,7 +98,45 @@ server <- function(input, output) {
   output$score <- renderText({
     req(input$data)
     ind <- readxl::read_excel(input$data$datapath)
-    print(userScore(ind))
+    s <- userScore(ind)
+    paste("Your genetic score is:", s)
+  })
+
+
+  output$table1 <- renderTable({
+    req(input$data)
+    ind <- readxl::read_excel(input$data$datapath)
+    paste(geneOverview(ind))
+    optimal
+  })
+
+  output$table2 <- renderTable({
+    req(input$data)
+    ind <- readxl::read_excel(input$data$datapath)
+    paste(geneOverview(ind))
+    neutral
+  })
+
+  output$table3 <- renderTable({
+    req(input$data)
+    ind <- readxl::read_excel(input$data$datapath)
+    paste(geneOverview(ind))
+    unfavourable
+  })
+
+  output$speed <- renderText({
+    req(input$data)
+    ind <- readxl::read_excel(input$data$datapath)
+    s <- powerSpeed(ind)
+    paste("You have ", s,
+          "genes that associate with power and speed.")
+  })
+
+  output$table4 <- renderTable({
+    req(input$data)
+    ind <- readxl::read_excel(input$data$datapath)
+    paste(powerSpeed(ind))
+    powerspeed
   })
 
 }

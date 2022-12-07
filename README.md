@@ -44,27 +44,16 @@ require("devtools")
 #> Loading required package: devtools
 #> Loading required package: usethis
 devtools::install_github("hjovi1/PerfOMICS", build_vignettes = TRUE)
-#> Downloading GitHub repo hjovi1/PerfOMICS@HEAD
-#> bit  (4.0.4 -> 4.0.5) [CRAN]
-#> plyr (1.8.7 -> 1.8.8) [CRAN]
-#> Installing 2 packages: bit, plyr
-#> 
-#> The downloaded binary packages are in
-#>  /var/folders/p6/d8fhdj314xq0fczml73596c80000gn/T//RtmpqNCpsR/downloaded_packages
-#>      checking for file ‘/private/var/folders/p6/d8fhdj314xq0fczml73596c80000gn/T/RtmpqNCpsR/remotes430055eab4bf/hjovi1-PerfOMICS-90c9044/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/p6/d8fhdj314xq0fczml73596c80000gn/T/RtmpqNCpsR/remotes430055eab4bf/hjovi1-PerfOMICS-90c9044/DESCRIPTION’ (445ms)
-#>   ─  preparing ‘PerfOMICS’:
-#>   ✔  checking DESCRIPTION meta-information
-#>   ─  installing the package to build vignettes
-#>      creating vignettes ...  ✔  creating vignettes (10.8s)
-#>   ─  checking for LF line-endings in source and make files and shell scripts
-#>   ─  checking for empty or unneeded directories
-#>   ─  building ‘PerfOMICS_1.1.0.tar.gz’
-#>      
-#> 
+#> Skipping install of 'PerfOMICS' from a github remote, the SHA1 (145d5365) has not changed since last install.
+#>   Use `force = TRUE` to force installation
 library("PerfOMICS")
 ```
 
 ## To run the ShinyApp
+
+``` r
+# runPerfOMICS()
+```
 
 ## Package Overview
 
@@ -137,7 +126,7 @@ is illustrated below.
 ``` r
 ls("package:PerfOMICS")
 #> [1] "geneOverview"    "generateDataset" "genotypeScatter" "powerSpeed"     
-#> [5] "scatterPlot"     "scoreHistogram"  "userScore"
+#> [5] "runPerfOMICS"    "scatterPlot"     "scoreHistogram"  "userScore"
 browseVignettes("PerfOMICS")
 #> starting httpd help server ... done
 ```
