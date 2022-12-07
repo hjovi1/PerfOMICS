@@ -10,7 +10,10 @@ performance prediction scores based on major genetic variants known to
 be associated with s specific aspects of sports performance and to help
 profile athletes in terms of endurance, power and speed ability,
 forecast effects of athletic performance, and provide training
-recommendations.
+recommendations to help maximize athletic potential. This package
+visualizes genetic score frequencies and the relationships between
+genetic scores and cardiovascular fitness as well as the relationships
+between genetic variants and cardiovascular fitness.
 
 The biological data analysed by `PerfOMICS` are the genotypes and
 variants of 23 different genes associated with athletic ability. These
@@ -19,12 +22,6 @@ data included in this R package has been synthetically synthesized using
 information on the frequencies of each genotype for the 23 genes being
 analysed. A function responsible for generating a data set using the
 researched genotype probabilities.
-
-The goal of PerfOMICS is to profile athletes in terms of endurance,
-power and speed and forecast the effects on athletic performance and
-training recommendations. This package may help athletes decide their
-choice of sport or athletic activity and maximize athletic potential
-through tailoring of athletic programs.
 
 The \`PerfOMICS\` package was developed using \`R version 4.1.1
 (2021-08-10)\`,
@@ -41,8 +38,18 @@ require("devtools")
 #> Loading required package: devtools
 #> Loading required package: usethis
 devtools::install_github("hjovi1/PerfOMICS", build_vignettes = TRUE)
-#> Skipping install of 'PerfOMICS' from a github remote, the SHA1 (24870ff0) has not changed since last install.
-#>   Use `force = TRUE` to force installation
+#> Downloading GitHub repo hjovi1/PerfOMICS@HEAD
+#> 
+#>      checking for file ‘/private/var/folders/p6/d8fhdj314xq0fczml73596c80000gn/T/Rtmpy4PKPY/remotes7f6470e3041a/hjovi1-PerfOMICS-05fe40e/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/p6/d8fhdj314xq0fczml73596c80000gn/T/Rtmpy4PKPY/remotes7f6470e3041a/hjovi1-PerfOMICS-05fe40e/DESCRIPTION’ (465ms)
+#>   ─  preparing ‘PerfOMICS’:
+#>      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
+#>   ─  installing the package to build vignettes
+#>      creating vignettes ...  ✔  creating vignettes (11s)
+#>   ─  checking for LF line-endings in source and make files and shell scripts
+#>   ─  checking for empty or unneeded directories
+#> ─  building ‘PerfOMICS_1.1.0.tar.gz’
+#>      
+#> 
 library("PerfOMICS")
 ```
 
