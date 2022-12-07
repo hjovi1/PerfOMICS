@@ -73,6 +73,7 @@ userScore <- function(data){
   }
   # calculate and return total genetic score
   totalScore = (100/46)*totalScore
+  print("Your genetic score is:")
   return(totalScore)
 }
 

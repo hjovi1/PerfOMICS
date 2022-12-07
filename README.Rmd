@@ -121,7 +121,7 @@ To visualize a histogram of the genetic scores of each individual in the
 data set including a density line.
 
 ```{r}
-knitr::include_graphics("man/figures/bcb410.jpg")
+knitr::include_graphics("man/figures/BCB410overview.png")
 ```
 
 ## Contributions

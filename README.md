@@ -11,9 +11,9 @@ be associated with s specific aspects of sports performance and to help
 profile athletes in terms of endurance, power and speed ability,
 forecast effects of athletic performance, and provide training
 recommendations to help maximize athletic potential. This package
-visualizes genetic score frequencies and the relationships between
-genetic scores and cardiovascular fitness as well as the relationships
-between genetic variants and cardiovascular fitness.
+visualizes genetic score frequencies in datasets and the relationships
+between genetic scores and cardiovascular fitness as well as the
+relationships between genetic variants and cardiovascular fitness.
 
 The biological data analysed by `PerfOMICS` are the genotypes and
 variants of 23 different genes associated with athletic ability. These
@@ -38,18 +38,8 @@ require("devtools")
 #> Loading required package: devtools
 #> Loading required package: usethis
 devtools::install_github("hjovi1/PerfOMICS", build_vignettes = TRUE)
-#> Downloading GitHub repo hjovi1/PerfOMICS@HEAD
-#> 
-#>      checking for file ‘/private/var/folders/p6/d8fhdj314xq0fczml73596c80000gn/T/Rtmpy4PKPY/remotes7f6470e3041a/hjovi1-PerfOMICS-05fe40e/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/p6/d8fhdj314xq0fczml73596c80000gn/T/Rtmpy4PKPY/remotes7f6470e3041a/hjovi1-PerfOMICS-05fe40e/DESCRIPTION’ (465ms)
-#>   ─  preparing ‘PerfOMICS’:
-#>      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
-#>   ─  installing the package to build vignettes
-#>      creating vignettes ...  ✔  creating vignettes (11s)
-#>   ─  checking for LF line-endings in source and make files and shell scripts
-#>   ─  checking for empty or unneeded directories
-#> ─  building ‘PerfOMICS_1.1.0.tar.gz’
-#>      
-#> 
+#> Skipping install of 'PerfOMICS' from a github remote, the SHA1 (05fe40e8) has not changed since last install.
+#>   Use `force = TRUE` to force installation
 library("PerfOMICS")
 ```
 
@@ -123,10 +113,10 @@ To visualize a histogram of the genetic scores of each individual in the
 data set including a density line.
 
 ``` r
-knitr::include_graphics("man/figures/bcb410.jpg")
+knitr::include_graphics("man/figures/BCB410overview.png")
 ```
 
-<img src="man/figures/bcb410.jpg" width="100%" />
+<img src="man/figures/BCB410overview.png" width="100%" />
 
 ## Contributions
 
