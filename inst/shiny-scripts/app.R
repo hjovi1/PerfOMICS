@@ -21,7 +21,8 @@ ui <- fluidPage(
                 accept = ".xlsx"),
 
       tags$p("Upload a .xlsx file corresponding to the set of genetic profiles
-             you would like to visualize and analyze."),
+             you would like to visualize and analyze.
+             Sample data to download: https://github.com/hjovi1/PerfOMICS/blob/8128e2fec8f0d07d7f1b7cf0fc0ed38c1a0c3f06/inst/extdata/fake_dataset.xlsx"),
 
       # Horizontal line ----
       tags$hr(),
@@ -31,7 +32,9 @@ ui <- fluidPage(
                 multiple = FALSE,
                 accept = ".xlsx"),
 
-      tags$p("Upload a .xlsx file containing a single genetic profile for analysis."),
+      tags$p("Upload a .xlsx file containing a single genetic profile for analysis.
+             Sample data to download: https://github.com/hjovi1/PerfOMICS/blob/8128e2fec8f0d07d7f1b7cf0fc0ed38c1a0c3f06/inst/extdata/Ind1.xlsx.
+             More sample data: https://github.com/hjovi1/PerfOMICS/blob/8128e2fec8f0d07d7f1b7cf0fc0ed38c1a0c3f06/inst/extdata/Ind2.xlsx"),
 
       # Horizontal line ----
       tags$hr(),
