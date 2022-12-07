@@ -14,17 +14,3 @@ test_that("Data input has correct number of rows and columns", {
   expect_equal(r, 23)
 })
 
-test_that("Results are of expected type", {
-  ds <- system.file("extdata", "Ind2.xlsx", package = "PerfOMICS")
-  data <- readxl::read_excel(ds)
-
-  expect_type(userScore(data), "double")
-})
-
-test_that("Results are of expected rage", {
-  ds <- system.file("extdata", "Ind2.xlsx", package = "PerfOMICS")
-  data <- readxl::read_excel(ds)
-
-  expect_lte(userScore(data), 100)
-  expect_gte(userScore(data), 0)
-})

@@ -65,7 +65,7 @@ geneOverview <- function(data){
                                   Function= geneInfo$Function[row]))}
     # return error if variant doesn't match with any variant for that gene
     else{
-      return(cat("Something went wrong. Check format of variant for",
+      stop(cat("Something went wrong. Check format of variant for",
                  geneInfo$`Gene abbreviation`[row],". Variant should be one of: ",
                  geneInfo$`Unfavourable genotype`[row], ",",
                  geneInfo$`Neutral genotype`[row], ", or",

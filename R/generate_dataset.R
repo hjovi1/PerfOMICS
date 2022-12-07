@@ -27,6 +27,10 @@
 #' @importFrom stats runif
 
 generateDataset <- function(entries){
+  if (!(is.numeric(entries))){
+    stop("Incorrect type for parameter 'entries'")
+  }
+
   DS = data.frame(
     "ACE"= integer(0),
     "ACTN3"= integer(0),

@@ -87,6 +87,9 @@ scatterPlot <-function(data){
 #' @export
 
 genotypeScatter <- function(dataset, gene){
+  if(is.null(gene)){
+    stop("This gene column does not exist. Please input another one.")
+  }
   fitness <- dataset$Fitness
   p <-graphics::plot(gene, fitness, main = "Gene vs Fitness Scatterplot with Regression",
                      xlab = "Genotype Score of Gene",
@@ -96,7 +99,7 @@ genotypeScatter <- function(dataset, gene){
                      ylim = c(1,6),
                      pch = 21, frame = FALSE,
                      col = 1)
-  abline(lm(fitness~gene), col=4)
+  abline(stats::lm(fitness~gene), col=4)
   return(p)
 }
 #[END] Written by Helena Jovic
