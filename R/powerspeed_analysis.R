@@ -35,36 +35,34 @@ powerSpeed <- function(data){
     # check genotypes of genes that are associated with power and speed
     if (gene == 'ACE'){
       if (data$Variant[row] == 'DD'){
+        print('ACE')
         powerspeedGenes <- append(powerspeedGenes, gene)
       }
     }
     else if (gene == 'HIF1A'){
       if (data$Variant[row] == 'TT'){
+        print('HIF1A')
         powerspeedGenes <- append(powerspeedGenes, gene)
         }
     }
     else if (gene == 'ACTN3'){
       if (data$Variant[row] == 'XX'){
+        print('ACTN3')
         powerspeedGenes <- append(powerspeedGenes, gene)
       }
     }
     else if (gene == 'AMPD1'){
       if (data$Variant[row] == 'CC'){
+        print('AMPD1')
         powerspeedGenes <- append(powerspeedGenes, gene)
       }
     }
-    else{
-      # if there is no match we continue to next iteration
-      next
-    }
   }
-  # Let user know which power speed associations match with their profile
-  paste("You have ", length(powerspeedGenes),
-      "genes out of 4 that optimally associate with power and speed. Review each associated genotype's effect on athletic performance and recommended training.")
   # Show user each genotype's effect on training and training recommendations
-
   ps <- system.file("extdata", "powerspeed.csv", package = "PerfOMICS")
   overview <- readr::read_csv(ps)
+  print("Please type View(overview) in your R console. The following genes in the genetic profile are optimal for speed and power:")
+  # Let user know which power speed associations match with their profile
   return(powerspeedGenes)
 }
 

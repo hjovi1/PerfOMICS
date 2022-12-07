@@ -129,7 +129,7 @@ server <- function(input, output) {
     req(input$data)
     ind <- readxl::read_excel(input$data$datapath)
     s <- powerSpeed(ind)
-    paste("Gene variant mach in your genetic profile!", s)
+    paste("Identified as match:", s)
   })
 # Output for Speed Power Overview
   output$table4 <- renderTable({
