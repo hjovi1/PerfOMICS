@@ -60,7 +60,8 @@ library("PerfOMICS")
 ## Running Shiny App
 
 ```{r}
-# runPerfOMICS()
+# Commented to reduce lag in runtime of rendering
+# PerfOMICS::runPerfOMICS()
 ```
 
 ## Package Overview
@@ -73,13 +74,13 @@ ls("package:PerfOMICS")
 browseVignettes("PerfOMICS")
 ```
 
-There are three datasets included in **`extdata`** folder in **`inst`**
-for use in this package. There are three functions available for
-individual analysis: `userScore`, `geneOverview` and `powerSpeed`. There
-are three functions available for plotting large datasets:
-`scatterPlot`, `scoreHistogram` and `genotypeScatter`. The function
-`generateDataset` allows user to create a dataset researched
-probabilities of genotype frequencies.
+There are three datasets included in `extdata` folder in `inst` for use
+in this package. There are three functions available for individual
+analysis: `userScore`, `geneOverview` and `powerSpeed`. There are three
+functions available for plotting large datasets: `scatterPlot`,
+`scoreHistogram` and `genotypeScatter`. The function `generateDataset`
+allows user to create a dataset researched probabilities of genotype
+frequencies.
 
 #### `userScore`
 
@@ -122,62 +123,11 @@ scatter plot.
 To visualize a histogram of the genetic scores of each individual in the
 data set including a density line.
 
-## Package Structure
+```{r}
+knitr::include_graphics("man/figures/bcb410.jpg")
+```
 
-| - PerfOMICS
-|   \|- PerfOMICS.Rproj
-|   \|- DESCRIPTION
-|   \|- NAMESPACE
-|   \|- LICENSE
-|   \|- LICENSE.md
-|   \|- README.md
-|   \|- README.Rmd
-|   \|- build
-|     \|- vignette.rds
-|   \|- data
-|     \|- test.rda
-|   \|- inst
-|     \|- CITATION
-|     \|- app.R
-|     \|- extdata
-|         fake_dataset.xlsx
-|         geneInfo.csv
-|         geneInfoReferences.csv
-|         Ind1.xlsx
-|         Ind2.xlsx
-|         powerseed.csv
-|   \|- man
-|     \|- dataset.Rd
-|     \|- geneOverview.Rd
-|     \|- generateDataset.Rd
-|     \|- genotypeScatter.Rd
-|     \|- powerSpeed.Rd
-|     \|- scatterPlot.Rd
-|     \|- scoreHistogram.Rd
-|     \|- userScore.Rd
-|     \|- figures
-|         README.png
-|   \|- R
-|     \|- data.R
-|     \|- gene_overview.R
-|     \|- generate_dataset.R
-|     \|- powerspeed_analysis.R
-|     \|- scatter_plot.R
-|     \|- histo_plot.R
-|     \|- genescore_analysis.R
-|   \|- vignettes
-|     \|- PerfOMICS.Rmd
-|   \|- tests
-|     \|- testthat.R
-|     \|- testthat
-|       \|- test-gene_overview.R
-|       \|- test-generate_dataset.R
-|       \|- test_powerspeed_analysis.R
-|       \|- test-scatter_plot.R
-|       \|- test_histo_plot.R
-|       \|- test_genescore_analysis.R
-
-## Contritbutions
+## Contributions
 
 The author of the package is Helena Jovic.
 
@@ -305,10 +255,6 @@ Bioinformatics course at the University of Toronto, Toronto, CANADA.
 contributions. To submit an issue, use the [GitHub
 issues](https://github.com/hjovi1/PerfOMICS/issues). Many thanks to
 those who provided feedback to improve this package.\
-
-```{r}
-knitr::include_graphics("man/figures/bcb410.jpg")
-```
 
 ## Assumptions
 
