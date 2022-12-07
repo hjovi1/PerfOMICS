@@ -10,7 +10,7 @@ performance prediction scores based on major genetic variants known to
 be associated with s specific aspects of sports performance and to help
 profile athletes in terms of endurance, power and speed ability,
 forecast effects of athletic performance, and provide training
-recommendations.
+recommendations to maximize athletic potential.
 
 The biological data analysed by `PerfOMICS` are the genotypes and
 variants of 23 different genes associated with athletic ability. These
@@ -19,12 +19,6 @@ data included in this R package has been synthetically synthesized using
 information on the frequencies of each genotype for the 23 genes being
 analysed. A function responsible for generating a data set using the
 researched genotype probabilities.
-
-The goal of PerfOMICS is to profile athletes in terms of endurance,
-power and speed and forecast the effects on athletic performance and
-training recommendations. This package may help athletes decide their
-choice of sport or athletic activity and maximize athletic potential
-through tailoring of athletic programs.
 
 The \`PerfOMICS\` package was developed using \`R version 4.1.1
 (2021-08-10)\`,
