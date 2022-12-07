@@ -1,7 +1,7 @@
 #' @title scoreHistogram
 #'
 #' @description This function is used to visualize a histogram of the genetic scores
-#' of each individual in the data set and a regression line.
+#' of each individual in the data set and a density line.
 #'
 #' @param data object containing data set to be plotted
 #'

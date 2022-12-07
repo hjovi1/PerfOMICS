@@ -5,9 +5,16 @@ date: "`r format(Sys.time(), '%d %b %Y')`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{PerfOMICS}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
+
+```{r setup}
+library("PerfOMICS")
+```
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -18,6 +25,7 @@ knitr::opts_chunk$set(
 
 ```{r, include=FALSE}
 library(knitr)
+# This code has been reference from the package Testing:Introduction_TestPackage.Rmd
 opts_chunk$set(fig.align = "center", 
                out.width = "90%",
                fig.width = 6, fig.height = 5.5,
@@ -34,83 +42,314 @@ set.seed(1) # for exact reproducibility
 
 ## Introduction
 
-See `help(package = "PerfOMICS")` for further details and references provided by `citation("PerfOMICS")`. To download **PerfOMICS**, use the following commands:
+The purpose of `PerfOMICS` is to provide package users with athletic
+performance prediction scores based on major genetic variants known to
+be associated with s specific aspects of sports performance and to help
+profile athletes in terms of endurance, power and speed ability,
+forecast effects of athletic performance, and provide training
+recommendations.
+
+See `help(package = "PerfOMICS")` for further details and references
+provided by `citation("PerfOMICS")`.
+
+To download **PerfOMICS**, use the following commands:
 
 ``` r
 require("devtools")
 devtools::install_github("hjovi1/PerfOMICS", build_vignettes = TRUE)
 library("PerfOMICS")
 ```
+
 To list all functions available in the package:
+
 ``` r
-lsf.str("package:PerfOMICS")
+ls("package:PerfOMICS")
 ```
 
-## Details
+## PerfOMICS Details
 
-The biological data analysed by PerfOMICS are the genotypes and variants of 
-23 different genes associated with athletic ability. These variants all have
-researched frequencies in large populations. The data in this R package has
-been synthetically synthesized using information on the frequencies of each 
-genotype for the 23 genes being analysed. The data set being generated can be
-as large as needed.
+The biological data analysed by PerfOMICS are the genotypes and variants
+of 23 different genes associated with athletic ability. These variants
+all have researched probabilities in large populations. The data
+included in this R package has been synthetically synthesized using
+information on the frequencies of each genotype for the 23 genes being
+analysed. A function responsible for generating a data set using the
+researched genotype probabilities.
 
-Total genotype score (TGS) reflects the additive effect of genotypes
-on predicting a complex trait such as athletic performance. It is an algorithm
-introduced by Williams and Folland and is also known as a genetic predisposition
-score using synthetic data of 23 genetic markers. As of yet, there does not
-exist an R package that calculates this score using Williams and Folland
-algorithm. PerfOMICS is a novel tool since it provides a detailed report on an 
-athlete's polygenic profile as well as analyses and plots the frequencies of 
-TGS from the synthesized data. This tool can further assist in helping athletes 
-decide their choice of sport or athletic activity, maximize athletic potential 
-through tailoring of athletic programs, provide guidelines on preventive 
-measures and corrective action for athletes susceptible to sports-related 
-injuries.
+Total genotype score (TGS) reflects the additive effect of genotypes on
+predicting a complex trait such as athletic performance. It is an
+algorithm introduced by Williams and Folland in 2007 and is also known
+as a genetic predisposition score using synthetic data of 23 genetic
+markers. As of yet, there does not exist an R package that calculates
+this score using Williams and Folland algorithm. PerfOMICS is a novel
+tool since it provides a detailed report on an athlete's polygenic
+profile as well as analyses and plots the relationships between genetic
+scores, genotype scores and cardiovascular fitness from the synthesized
+data. This tool can further assist in helping athletes decide their
+choice of sport or athletic activity, and maximize athletic potential by
+understanding implications of their genetic profile on their athletic
+performance and recommended training.
 
-- Analysis (4 functions):
-a. genotypeProb(): outputs a set of 23 genotypes with a respective genetic score 
-b. calculateTGS(): calculates the total genotype score using the set from a.
-c. athleteProfile(): generates an individualised athlete polygenetic profile.
-d. generateDataSet(n): generates a dataset <1 individual polygenetic profiles
-to be used for analysis and plots
-e. printGeneInfo(): prints information on each gene that is being used in the
-TGS calculation (name, function, variants and frequencies)
+## PerfOMICS Tutorial
 
-- Function for Plots (3 functions):
-a. generateFreqPlot(): generates a frequency plot using a generated dataset of TGS
-b. generateBoxPlot(): generates a box plot using a generated dataset of TGS
+### **Locate, store and view datasets included in package**
 
-Assumptions:
-Genes and genomic variant selection for predicting athletic performance depends
-upon the individual\'s interpretation of the association studies and the 
-strength of each association. This package should not be taken as real 
-medical advice. The development of the algorithms that take into account 
-genotypes of selected genes, assign \"weight\" values, threshold levels and 
-take into account variant to variant interactions in a DNA-profile-to-trait 
-relation, are proprietary and should be amendable to patent protection, as are 
-the gene and variant selection itself and the individual genotype DNA 
-profiles-to-trait interpretations.
+```{r}
+library("readr")
+library("stats")
+library("readxl")
+library("plyr")
+library("graphics")
+```
 
-## References
-[1] Kambouris, M., Ntalouka, F., Ziogas, G., & Maffulli, N. (2012). Predictive Genomics
-DNA Profiling for Athletic Performance. Recent patents on DNA & gene sequences, 6.
-doi:10.2174/187221512802717321
+There are three datasets included in **`extdata`** folder in `inst` for
+use in this package:
 
-[2] Petr M, Thiel D, Kateřina K, Brož P, Malý T, Zahálka F, Vostatková P, Wilk M, Chycki
-J, Stastny P. Speed and power-related gene polymorphisms associated with playing
-position in elite soccer players. Biol Sport. 2022 Mar;39(2):355-366. doi:
-10.5114/biolsport.2022.105333. Epub 2021 Apr 21. PMID: 35309536; PMCID:
-PMC8919892.					
+1.  \``` Ind1.xlsx` `` is a dataset containing the genetic profile of
+    one individual, with two columns 'Gene' and 'Variant' and 23 rows,
+    where each row corresponds to one gene.
 
-[3] Williams AG, Folland JP. Similarity of polygenic profiles limits the potential for elite
-human physical performance. J Physiol. 2008 Jan 1;586(1):113-21. doi:
-10.1113/jphysiol.2007.141887. Epub 2007 Sep 27. PMID: 17901117; PMCID:
-PMC2375556.
+    This dataset can be accessed at any time by running the following
+    commands:
 
-[4] Ruiz, J. R., Arteta, D., Buxens, A., Artieda, M., Gómez-Gallego, F., Santiago, C., \...
-Lucia, A. (2010). Can we identify a power-oriented polygenic profile? Journal of Applied
-Physiology, 108(3), 561--566. doi:10.1152/japplphysiol.01242.2009
+    ```{r}
+    # ds1 <- system.file("extdata", "Ind1.xlsx", package = "PerfOMICS")
+    # data1 <- readxl::read_excel(ds1)
+    # View(data1)
+    ```
+
+2.  `` `Ind2.xlsx` `` is another dataset containing the genetic profile
+    of one individual, with two columns 'Gene' and 'Variant' and 23
+    rows, where each row corresponds to one gene.
+
+    This dataset can be accessed at any time by running the following
+    commands:
+
+    ```{r warning=FALSE}
+    # ds2 <- system.file("extdata", "Ind2.xlsx", package = "PerfOMICS")
+    # data2 <- readxl::read_excel(ds2)
+    # View(data2)
+    ```
+
+3.  `` `fake_dataset.xlsx` `` is a dataset containing genetic profiles
+    of 100 individual, with 25 columns corresponding to each gene,
+    'Score' and 'Fitness' and 100 rows, where each row corresponds to
+    one individual. The dataset was generated using the function
+    \`generateDataset\`.
+
+    This dataset can be accessed at any time by running the following
+    commands:
+
+    ```{r}
+    # ds <- system.file("extdata", "fake_dataset.xlsx", package = "PerfOMICS")
+    # dataset <- readxl::read_excel(ds)
+    # View(dataset)
+    ```
+
+### **Using Functions for Individual Analysis**
+
+#### `userScore:`
+
+This function takes in a data frame containing an individual genetic
+profile of 23 gene polymorphisms and is used to calculate a genetic
+score on a scale of 0 to 100 using an algorithm proposed by Williams and
+Folland in 2008. The algorithm is based on researched associations
+between certain variants and athletic endurance performance. A score of
+0, means every gene in the individual genetic profile is unfavourable
+for athletic endurance performance, whereas a score of 100 means every
+gene in the genetic profile is optimal for athletic endurance
+performance.
+
+```{r warning=FALSE}
+# userScore(data2)
+```
+
+#### `geneOverview:`
+
+This function takes in a data frame containing an individual genetic
+profile of 23 gene polymorphisms and is used to provide an overview of a
+user's genetic profile by categorizing each gene's variant into three
+buckets: unfavorable, neutral and optimal for athletic endurance
+performance.
+
+```{r warning=FALSE}
+# geneOverview(data2)
+```
+
+#### `powerSpeed:`
+
+This function takes in a data frame containing an individual genetic
+profile of 23 gene polymorphisms and is used to provide users a power
+speed analysis on a genetic profile by checking for matches between the
+genetic profile and the optimal variants for genes associated with power
+and speed ability. This function returns the associated genotypes in an
+individual profile, each genotype's effect on sports performance and the
+corresponding recommended training.
+
+```{r}
+# powerSpeed(data2)
+```
+
+### **Using Functions for Plotting**
+
+#### `scatterPlot:`
+
+This function is used to visualize a scatter plot of a variable in the
+provided data set and the cardiovascular fitness level of each
+individual in the data set. A regression line is added to show the trend
+in the data given in the scatter plot.
+
+```{r}
+# scatterPlot(dataset)
+```
+
+#### `scoreHistogram:`
+
+This function is used to visualize a histogram of the genetic score of
+each individual in the data set and a density line.
+
+```{r}
+# scoreHistogram(dataset)
+```
+
+#### `genotypeScatter:`
+
+This function is used to visualize the relationship between genotype
+score of a particular gene in an individual and their cardiovascular
+fitness level. A regression line is added to show the trend in the data
+given in the scatter plot.
+
+```{r}
+# genotypeScatter(dataset,dataset$ACE)
+```
+
+### **Function for Generating a Dataset**
+
+#### `generateDataset:`
+
+This function is used to generate and save a dataset of entries
+containing 23 gene polymorphisms associatied with athletic endurance
+performance ability as well as cardiovascular fitness level. Each gene
+and their variants has a researched frequency in large populations. This
+dataset uses these probabilities to generate a contribed dataset
+suitable for the purposes of this R package. The cardiovascular fitness
+of each entry is based on the genetic score.
+
+```{r}
+# generateDataset(100)
+```
+
+### Gene Information
+
+Run these commands to access a data frame with information on the 23
+genes used for this package. Information includes: function, position,
+genotypes, frequencies and sources where data was retrieved.
+
+```{r}
+# infopath <- system.file("extdata", "geneInfo.csv", package = "PerfOMICS")
+# geneInfo <- readr::read_csv(infopath)
+# View(geneInfo)
+```
+
+### Launch Shiny App
+
+```{r}
+# runPerfOMICS()
+```
+
+## Package Structure
+
+| - PerfOMICS
+|   \|- PerfOMICS.Rproj
+|   \|- DESCRIPTION
+|   \|- NAMESPACE
+|   \|- LICENSE
+|   \|- LICENSE.md
+|   \|- README.md
+|   \|- README.Rmd
+|   \|- build
+|     \|- vignette.rds
+|   \|- data
+|     \|- test.rda
+|   \|- inst
+|     \|- CITATION
+|     \|- app.R
+|     \|- extdata
+|         fake_dataset.xlsx
+|         geneInfo.csv
+|         geneInfoReferences.csv
+|         Ind1.xlsx
+|         Ind2.xlsx
+|         powerseed.csv
+|   \|- man
+|     \|- dataset.Rd
+|     \|- geneOverview.Rd
+|     \|- generateDataset.Rd
+|     \|- genotypeScatter.Rd
+|     \|- powerSpeed.Rd
+|     \|- scatterPlot.Rd
+|     \|- scoreHistogram.Rd
+|     \|- userScore.Rd
+|     \|- figures
+|         README.png
+|   \|- R
+|     \|- data.R
+|     \|- gene_overview.R
+|     \|- generate_dataset.R
+|     \|- powerspeed_analysis.R
+|     \|- scatter_plot.R
+|     \|- histo_plot.R
+|     \|- genescore_analysis.R
+|   \|- vignettes
+|     \|- PerfOMICS.Rmd
+|   \|- tests
+|     \|- testthat.R
+|     \|- testthat
+|       \|- test-gene_overview.R
+|       \|- test-generate_dataset.R
+|       \|- test_powerspeed_analysis.R
+|       \|- test-scatter_plot.R
+|       \|- test_histo_plot.R
+|       \|- test_genescore_analysis.R
+
+## Assumptions
+
+Genes and genomic variant selection for predicting athletic performance
+depends upon the individual's interpretation of the association studies
+and the strength of each association. This package should not be taken
+as real medical advice. The development of the algorithms that take into
+account genotypes of selected genes, assign "weight" values, threshold
+levels and take into account variant to variant interactions in a
+DNA-profile-to-trait relation, are proprietary and should be amendable
+to patent protection, as are the gene and variant selection itself and
+the individual genotype DNA profiles-to-trait interpretations.
+
+## Package Reference
+
+Jovic, H. (2022) PerfOMICS. Unpublished. URL
+<https://github.com/hjovi1/PerfOMICSLinks> to an external site."
+
+## Other References
+
+[1] Kambouris, M., Ntalouka, F., Ziogas, G., & Maffulli, N. (2012).
+Predictive Genomics DNA Profiling for Athletic Performance. Recent
+patents on DNA & gene sequences, 6. <doi:10.2174/187221512802717321>
+
+[2] Petr M, Thiel D, Kateřina K, Brož P, Malý T, Zahálka F, Vostatková
+P, Wilk M, Chycki J, Stastny P. Speed and power-related gene
+polymorphisms associated with playing position in elite soccer players.
+Biol Sport. 2022 Mar;39(2):355-366. doi: 10.5114/biolsport.2022.105333.
+Epub 2021 Apr 21. PMID: 35309536; PMCID: PMC8919892.
+
+[3] Williams AG, Folland JP. Similarity of polygenic profiles limits the
+potential for elite human physical performance. J Physiol. 2008 Jan
+1;586(1):113-21. doi: 10.1113/jphysiol.2007.141887. Epub 2007 Sep 27.
+PMID: 17901117; PMCID: PMC2375556.
+
+[4] Ruiz, J. R., Arteta, D., Buxens, A., Artieda, M., Gómez-Gallego, F.,
+Santiago, C., \... Lucia, A. (2010). Can we identify a power-oriented
+polygenic profile? Journal of Applied Physiology, 108(3), 561--566.
+<doi:10.1152/japplphysiol.01242.2009>
 
 ```{r}
 sessionInfo()

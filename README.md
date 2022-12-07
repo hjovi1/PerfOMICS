@@ -3,12 +3,20 @@
 
 # PerfOMICS
 
-PerfOMICS is an R package that predicts athletic performance scores
-using user-provided data on major genetic variants known to be
-associated with specific aspects of sports performance to help profile
-athletes in terms of endurance, power and speed ability, predict and
-forecast effects of training programs and provide genetic insights into
-sports-related injury susceptibility and corrective action.
+The purpose of `PerfOMICS` is to provide package users with athletic
+performance prediction scores based on major genetic variants known to
+be associated with s specific aspects of sports performance and to help
+profile athletes in terms of endurance, power and speed ability,
+forecast effects of athletic performance, and provide training
+recommendations.
+
+The biological data analysed by `PerfOMICS` are the genotypes and
+variants of 23 different genes associated with athletic ability. These
+variants all have researched probabilities in large populations. The
+data included in this R package has been synthetically synthesized using
+information on the frequencies of each genotype for the 23 genes being
+analysed. A function responsible for generating a data set using the
+researched genotype probabilities.
 
 ## Description
 
@@ -17,16 +25,9 @@ The goal of PerfOMICS is to:
 1.  Profile athletes in terms of endurance, power and speed.
 
 2.  Predict and forecasting the effects of training programs and
-    strategies.
-
-3.  Provide genetic insights into injury susceptibility, prevention and
-    disease management.
-
-    This tool can further assist in helping athletes decide their choice
-    of sport or athletic activity, maximize athletic potential through
-    tailoring of athletic programs, provide guidelines on preventive
-    measures and corrective action for athletes susceptible to
-    sports-related injuries.
+    strategies to help athletes decide their choice of sport or athletic
+    activity and maximize athletic potential through tailoring of
+    athletic programs.
 
     The \`PerfOMICS\` package was developed using \`R version 4.1.1
     (2021-08-10)\`,
@@ -40,29 +41,105 @@ You can install the development version of PerfOMICS like so:
 
 ``` r
 require("devtools")
+#> Loading required package: devtools
+#> Loading required package: usethis
 devtools::install_github("hjovi1/PerfOMICS", build_vignettes = TRUE)
+#> Downloading GitHub repo hjovi1/PerfOMICS@HEAD
+#> bit  (4.0.4 -> 4.0.5) [CRAN]
+#> plyr (1.8.7 -> 1.8.8) [CRAN]
+#> Installing 2 packages: bit, plyr
+#> 
+#> The downloaded binary packages are in
+#>  /var/folders/p6/d8fhdj314xq0fczml73596c80000gn/T//RtmpqNCpsR/downloaded_packages
+#>      checking for file ‘/private/var/folders/p6/d8fhdj314xq0fczml73596c80000gn/T/RtmpqNCpsR/remotes430055eab4bf/hjovi1-PerfOMICS-90c9044/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/p6/d8fhdj314xq0fczml73596c80000gn/T/RtmpqNCpsR/remotes430055eab4bf/hjovi1-PerfOMICS-90c9044/DESCRIPTION’ (445ms)
+#>   ─  preparing ‘PerfOMICS’:
+#>   ✔  checking DESCRIPTION meta-information
+#>   ─  installing the package to build vignettes
+#>      creating vignettes ...  ✔  creating vignettes (10.8s)
+#>   ─  checking for LF line-endings in source and make files and shell scripts
+#>   ─  checking for empty or unneeded directories
+#>   ─  building ‘PerfOMICS_1.1.0.tar.gz’
+#>      
+#> 
 library("PerfOMICS")
 ```
 
-## Overview
+## To run the ShinyApp
 
-\`PerfOMICS\` contains 4 functions to demonstrate features of an
-athletic performance predictor R package. genotypeProb() outputs a set
-of 23 genotypes with a respective genetic score. calculateTGS():
-calculates the total genotype score using the set from genotypeProb().
-athleteProfile() generates an individualised athlete polygenetic
-profile. generateDataSet(n) generates a dataset of n polygenetic
-profiles to be used for analysis and plots. printGeneInfo() prints
-information on each gene that is being used in the TGS calculation
-(name, function, variants and frequencies)
+## Package Overview
+
+There are three datasets included in **`extdata`** folder in `inst` for
+use in this package. There are three functions available for individual
+analysis: `userScore`, `geneOverview` and `powerSpeed`. There are three
+functions available for plotting large datasets: `scatterPlot`,
+`scoreHistogram` and `genotypeScatter`. The function `generateDataset`
+allows user to create a dataset researched probabilities of genotype
+frequencies.
+
+## Package Structure
+
+\- PerfOMICS  
+  \|- PerfOMICS.Rproj  
+  \|- DESCRIPTION  
+  \|- NAMESPACE  
+  \|- LICENSE  
+  \|- LICENSE.md  
+  \|- README.md  
+  \|- README.Rmd  
+  \|- build  
+    \|- vignette.rds  
+  \|- data  
+    \|- test.rda  
+  \|- inst  
+    \|- CITATION  
+    \|- app.R  
+    \|- extdata  
+        fake_dataset.xlsx  
+        geneInfo.csv  
+        geneInfoReferences.csv  
+        Ind1.xlsx  
+        Ind2.xlsx  
+        powerseed.csv  
+  \|- man  
+    \|- dataset.Rd  
+    \|- geneOverview.Rd  
+    \|- generateDataset.Rd  
+    \|- genotypeScatter.Rd  
+    \|- powerSpeed.Rd  
+    \|- scatterPlot.Rd  
+    \|- scoreHistogram.Rd  
+    \|- userScore.Rd  
+    \|- figures  
+        README.png  
+  \|- R  
+    \|- data.R  
+    \|- gene_overview.R  
+    \|- generate_dataset.R  
+    \|- powerspeed_analysis.R  
+    \|- scatter_plot.R  
+    \|- histo_plot.R  
+    \|- genescore_analysis.R  
+  \|- vignettes  
+    \|- PerfOMICS.Rmd  
+  \|- tests  
+    \|- testthat.R  
+    \|- testthat  
+      \|- test-gene_overview.R  
+      \|- test-generate_dataset.R  
+      \|- test_powerspeed_analysis.R  
+      \|- test-scatter_plot.R  
+      \|- test_histo_plot.R  
+      \|- test_genescore_analysis.R
 
 Refer to package vignettes for more details. An overview of the package
 is illustrated below.
 
 ``` r
-#ls("package:PerfOMICS")
-#data(package = "PerfOMICS") 
-#browseVignettes("PerfOMICS")
+ls("package:PerfOMICS")
+#> [1] "geneOverview"    "generateDataset" "genotypeScatter" "powerSpeed"     
+#> [5] "scatterPlot"     "scoreHistogram"  "userScore"
+browseVignettes("PerfOMICS")
+#> starting httpd help server ... done
 ```
 
 ## Contritbutions
@@ -74,7 +151,7 @@ the frequency distribution of the TGS for n individual polygenic
 profiles. Other packages that are used are Hmisc, lattice, survival and
 Formula.
 
-## References
+## References (to be edited)
 
 \[1\] Kambouris, M., Ntalouka, F., Ziogas, G., & Maffulli, N. (2012).
 Predictive Genomics DNA Profiling for Athletic Performance. Recent
@@ -138,10 +215,10 @@ knitr::include_graphics("man/figures/bcb410.jpg")
 ## Assumptions
 
 Genes and genomic variant selection for predicting athletic performance
-depends upon the individual's interpretation of the association studies
+depends upon the individual’s interpretation of the association studies
 and the strength of each association. This package should not be taken
 as real medical advice. The development of the algorithms that take into
-account genotypes of selected genes, assign "weight" values, threshold
+account genotypes of selected genes, assign “weight” values, threshold
 levels and take into account variant to variant interactions in a
 DNA-profile-to-trait relation, are proprietary and should be amendable
 to patent protection, as are the gene and variant selection itself and

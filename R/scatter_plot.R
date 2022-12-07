@@ -95,6 +95,6 @@ genotypeScatter <- function(dataset, gene){
            pch = 21, frame = FALSE,
            col = 1)
   abline(lm(fitness~gene), col=4)
-  return(invisible(NULL))
+  return(p)
 }
 #[END] Written by Helena Jovic
