@@ -54,7 +54,7 @@ devtools::install_github("hjovi1/PerfOMICS", build_vignettes = TRUE)
 library("PerfOMICS")
 ```
 
-## Running Shiny App
+To run the Shiny app:
 
 ```{r}
 # Commented to reduce lag in runtime of rendering
@@ -71,13 +71,28 @@ ls("package:PerfOMICS")
 browseVignettes("PerfOMICS")
 ```
 
-There are three datasets included in `extdata` folder in `inst` for use
-in this package. There are three functions available for individual
-analysis: `userScore`, `geneOverview` and `powerSpeed`. There are three
-functions available for plotting large datasets: `scatterPlot`,
-`scoreHistogram` and `genotypeScatter`. The function `generateDataset`
-allows user to create a dataset researched probabilities of genotype
-frequencies.
+#### Data Structure
+
+**`PerfOMICS`** includes three data files for use included in `extdata`
+folder in `inst` . Individual data must be file of type .xlsx containing
+a single genetic profile for analysis. The data structure of this type
+is a table with 2 columns: *Gene* and *Variant* and 23 Rows, each row
+corresponding to one of the 23 *Genes*. Datasets for analysis must be of
+.xlsx type corresponding to the set of genetic profiles you would like
+to visualize and analyze. The data structure of this type is a table
+with 25 column headers, including 23 *Gene Names* (where each
+corresponding row value is a Variant Scores between 0-2, *Genetic
+Score*, where the corresponding row value is a score between 0-100,
+*Fitness Score*, where the corresponding row value is a number between
+1-6. The number of rows corresponds to the number of entries.
+
+#### Functions
+
+There are three functions available for individual analysis:
+`userScore`, `geneOverview` and `powerSpeed`. There are three functions
+available for plotting large datasets: `scatterPlot`, `scoreHistogram`
+and `genotypeScatter`. The function `generateDataset` allows user to
+create a dataset using researched probabilities of genotype frequencies.
 
 #### `userScore`
 
@@ -121,7 +136,7 @@ To visualize a histogram of the genetic scores of each individual in the
 data set including a density line.
 
 ```{r}
-knitr::include_graphics("man/figures/BCB410overview.png")
+knitr::include_graphics("inst/extdata/BCB410overview.png")
 ```
 
 ## Contributions

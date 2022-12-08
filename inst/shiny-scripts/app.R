@@ -21,7 +21,10 @@ ui <- fluidPage(
                 accept = ".xlsx"),
 
       tags$p("Upload a .xlsx file corresponding to the set of genetic profiles
-             you would like to visualize and analyze"),
+             you would like to visualize and analyze. A table with 25 columns,
+             consisting of 23 Gene Variant Scores (0-2) , 1 Genetic Score (0-100)
+             1 Fitness Score (1-6). The number of rows for each entry is not specified.
+             See Data URL tab for example dataset."),
 
       # Horizontal line ----
       tags$hr(),
@@ -31,7 +34,10 @@ ui <- fluidPage(
                 multiple = FALSE,
                 accept = ".xlsx"),
 
-      tags$p("Upload a .xlsx file containing a single genetic profile for analysis."),
+      tags$p("Upload a .xlsx file containing a single genetic profile for analysis.
+             A table with 2 columns: Gene and Variant and 23 Rows, each
+             corresponding to one of the 23 gene associations. See Data URL tab
+             for two example data files."),
 
       # Horizontal line ----
       tags$hr(),
@@ -138,6 +144,7 @@ server <- function(input, output) {
     paste(powerSpeed(ind))
     powerspeed
   })
+
 # Output for Data URL
   output$data <- renderText({
     paste("Dataset: https://github.com/hjovi1/PerfOMICS/blob/8128e2fec8f0d07d7f1b7cf0fc0ed38c1a0c3f06/inst/extdata/fake_dataset.xlsx,
