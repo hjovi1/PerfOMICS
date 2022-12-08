@@ -257,61 +257,6 @@ geneInfo
 # runPerfOMICS()
 ```
 
-## Package Structure
-
-| - PerfOMICS
-|   \|- PerfOMICS.Rproj
-|   \|- DESCRIPTION
-|   \|- NAMESPACE
-|   \|- LICENSE
-|   \|- LICENSE.md
-|   \|- README.md
-|   \|- README.Rmd
-|   \|- build
-|     \|- vignette.rds
-|   \|- data
-|     \|- test.rda
-|   \|- inst
-|     \|- CITATION
-|     \|- app.R
-|     \|- extdata
-|         fake_dataset.xlsx
-|         geneInfo.csv
-|         geneInfoReferences.csv
-|         Ind1.xlsx
-|         Ind2.xlsx
-|         powerseed.csv
-|   \|- man
-|     \|- dataset.Rd
-|     \|- geneOverview.Rd
-|     \|- generateDataset.Rd
-|     \|- genotypeScatter.Rd
-|     \|- powerSpeed.Rd
-|     \|- scatterPlot.Rd
-|     \|- scoreHistogram.Rd
-|     \|- userScore.Rd
-|     \|- figures
-|         README.png
-|   \|- R
-|     \|- data.R
-|     \|- gene_overview.R
-|     \|- generate_dataset.R
-|     \|- powerspeed_analysis.R
-|     \|- scatter_plot.R
-|     \|- histo_plot.R
-|     \|- genescore_analysis.R
-|   \|- vignettes
-|     \|- PerfOMICS.Rmd
-|   \|- tests
-|     \|- testthat.R
-|     \|- testthat
-|       \|- test-gene_overview.R
-|       \|- test-generate_dataset.R
-|       \|- test_powerspeed_analysis.R
-|       \|- test-scatter_plot.R
-|       \|- test_histo_plot.R
-|       \|- test_genescore_analysis.R
-
 ## Assumptions
 
 Genes and genomic variant selection for predicting athletic performance
@@ -327,7 +272,7 @@ the individual genotype DNA profiles-to-trait interpretations.
 ## Package Reference
 
 Jovic, H. (2022) PerfOMICS. Unpublished. URL
-<https://github.com/hjovi1/PerfOMICSLinks> to an external site."
+<https://github.com/hjovi1/PerfOMICSLinks> to an external site.
 
 ## Other References
 
