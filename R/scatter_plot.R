@@ -53,7 +53,7 @@ scatterPlot <-function(data){
 #' a particular gene in an individual and their cardiovascular fitness level. A
 #' regression line is added to show the trend in the data given in the scatter plot.
 #'
-#' @param dataset containing data set to be plotted
+#' @param data containing data set to be plotted
 #'
 #' @param gene written in the format dataset$gene, corresponding to a column
 #'
@@ -70,10 +70,10 @@ scatterPlot <-function(data){
 #' # Example:
 #' # First load the dataset included in the package
 #' ds <- system.file("extdata", "fake_dataset.xlsx", package = "PerfOMICS")
-#' dataset <- readxl::read_excel(ds)
+#' data <- readxl::read_excel(ds)
 #'
 #' # Generate scatterplot using dataset
-#' genotypeScatter(dataset,dataset$ACE)
+#' genotypeScatter(data,data$ACE)
 #'
 #' @references
 #' Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) The New S Language.
@@ -86,11 +86,13 @@ scatterPlot <-function(data){
 #'
 #' @export
 
-genotypeScatter <- function(dataset, gene){
+genotypeScatter <- function(data, gene){
   if(is.null(gene)){
     stop("This gene column does not exist. Please input another one.")
   }
-  fitness <- dataset$Fitness
+
+
+  fitness <- data$Fitness
   p <-graphics::plot(gene, fitness, main = "Gene vs Fitness Scatterplot with Regression",
                      xlab = "Genotype Score of Gene",
                      ylab = "Cardiovascular Fitness 1 = lowest, 6 = maximum",

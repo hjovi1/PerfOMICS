@@ -4,10 +4,10 @@
 \alias{genotypeScatter}
 \title{genotypeScatter}
 \usage{
-genotypeScatter(dataset, gene)
+genotypeScatter(data, gene)
 }
 \arguments{
-\item{dataset}{containing data set to be plotted}
+\item{data}{containing data set to be plotted}
 
 \item{gene}{written in the format dataset$gene, corresponding to a column}
 }
@@ -28,10 +28,10 @@ regression line is added to show the trend in the data given in the scatter plot
 # Example:
 # First load the dataset included in the package
 ds <- system.file("extdata", "fake_dataset.xlsx", package = "PerfOMICS")
-dataset <- readxl::read_excel(ds)
+data <- readxl::read_excel(ds)
 
 # Generate scatterplot using dataset
-genotypeScatter(dataset,dataset$ACE)
+genotypeScatter(data,data$ACE)
 
 }
 \references{
